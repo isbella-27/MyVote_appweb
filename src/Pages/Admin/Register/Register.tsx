@@ -11,7 +11,7 @@ import Button from "../../../Components/Button/Button";
 
 const signupSchema = z.object({
     name: z.string().min(2, 'Nom trop court'),
-    email: z.email('Email invalide'),
+    email: z.string().email('Email invalide'),
     password: z.string().min(6, 'Mot de passe trop court'),
 });
 
@@ -28,7 +28,7 @@ export default function Register() {
             return;
         }
         localStorage.setItem("username", name);
-        navigate("/Profil");
+        navigate("/Home");
     };
 
     const [name, setName] = useState("")
@@ -47,34 +47,31 @@ export default function Register() {
     return (
         <div className="app-container">
             <div className="header-area">
-
                 <h1>VOTINGAPP</h1>
                 <p className="subtitle"> Welcome, please fill in your login informations</p>
             </div>
-            <div className="main-content">
-                <div className='login-card'>
-                    <form onSubmit={onSubmit}>
-                        <div className="form-group">
 
+            <div className="main-content">
+                <form onSubmit={onSubmit}>
+                    <div className='login-card'>
+                        <div className="form-group">
                             <Input label='Nom complet' reference='prénoms' type='text' placeholder='Entrez votre nom complet' onChange={onFullNameChange} value={name} />
                         </div>
                         <div className="form-group">
-
                             <Input label='Email' reference='email' type='email' placeholder='Entrez votre email' onChange={onFullEmailChange} value={email} />
                         </div>
                         <div className="form-group">
-
                             <Input label='Mot de passe' reference='password' type='password' placeholder='Entrez votre mot de passe' onChange={onFullPasswordChange} value={password} />
                         </div>
-                    </form>
-                </div>
-                <Button className='connexion-button' label="S'inscrire" type='submit' />
+
+                    </div>
+                    <Button className='connexion-button' label="S'inscrire" type='submit' />
+                </form>
+
                 <div className="text-center">
                     <p>Déjà membre ? <Link to="/">Se connecter</Link></p>
                 </div>
-
             </div>
-
         </div>
     )
 }
