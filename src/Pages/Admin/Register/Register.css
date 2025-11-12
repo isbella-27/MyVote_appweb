@@ -1,0 +1,126 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden; 
+}
+
+
+.app-container {
+    width: 100%;
+    max-width: 1000px; 
+    position: relative;
+    z-index: 2; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+
+.header-area {
+    width: 100%;
+    padding: 40px 20px 80px 20px; 
+    background-color: #347ad7; 
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+    position: relative;
+    z-index: 10; 
+}
+
+
+.main-content h1 { 
+    font-size: 1.8em;
+    font-weight: bold; 
+    color: white;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px; 
+}
+
+.subtitle { 
+    font-size: 0.9em;
+    color: white;
+    opacity: 0.9;
+    margin-bottom: 0; 
+}
+
+
+.login-card {
+    background-color: white;
+    padding: 30px; 
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); 
+    width: 90%; 
+    box-sizing: border-box;
+    position: relative;
+    z-index: 20; 
+    margin-top: -50px; 
+    margin-bottom: 20px; 
+}
+
+
+.login-card form {
+    margin: 0; 
+}
+.form-group {
+    margin-bottom: 25px; 
+}
+.form-group label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 600; 
+    color: #333;
+    margin-bottom: 8px;
+    text-align: left;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #eef2f7;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+
+.connexion-button {
+    width: 90%; 
+    padding: 18px; 
+    background-color: #347ad7; 
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px; 
+    margin-bottom: 50px;
+    box-shadow: 0 8px 15px rgba(66, 133, 244, 0.4); 
+    transition: background-color 0.3s;
+}
+
+.connexion-button:hover {
+    background-color: #4285F4; 
+}
+
+
+.text-center {
+    display: none;
+}

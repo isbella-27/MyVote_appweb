@@ -1,0 +1,50 @@
+/* Cellule du tableau contenant les boutons */
+td.btn-cell {
+  width: 120px; /* largeur fixe et proportionnée */
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px;
+}
+
+/* Conteneur des boutons */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* Boutons icône seuls */
+.btn-icon {
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  border: none;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Icônes */
+.size-icon {
+  width: 14px;
+  height: 14px;
+  stroke: #333;
+}
+
+/* Couleurs au survol */
+.btn-delete:hover {
+  background-color: #f8d7da;
+}
+.btn-edit:hover {
+  background-color: #d1ecf1;
+}
+.btn-details:hover {
+  background-color: #d4edda;
+}
