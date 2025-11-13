@@ -7,7 +7,7 @@ import ConcoursEdit from "../../Pages/Crud/Concours/Edit/Edit";
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/Home',
         element: <Home/>,
     },
     {
