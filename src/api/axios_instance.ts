@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const axios_instance = axios.create({
-  baseURL: 'https://focuspro.dayal-enterprises.com/public/api',
+const axiosInstance = axios.create({
+  baseURL: 'http://192.168.0.42:8000/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-axios_instance.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -19,7 +19,7 @@ axios_instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-axios_instance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     console.error('Erreur API:', error);
@@ -27,6 +27,4 @@ axios_instance.interceptors.response.use(
   }
 );
 
-export default axios_instance;
-
- 
+export default axiosInstance;

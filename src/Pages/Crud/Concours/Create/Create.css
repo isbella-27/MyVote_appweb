@@ -1,0 +1,140 @@
+.create-container {
+  max-width: 650px;
+  margin: 50px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 40px 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.create-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.create-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.create-header button {
+  background: none;
+  border: none;
+  color: #4a90e2;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.create-header button:hover {
+  color: #2d6fcf;
+}
+
+.create-form label {
+  font-weight: 500;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.create-form input,
+.create-form select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.create-form input:focus,
+.create-form select:focus {
+  border-color: #4a90e2;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.image-preview {
+  margin-top: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.image-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+.input-error {
+  font-size: 13px;
+  color: #e11d48;
+  margin-top: 4px;
+}
+
+button[type="submit"] {
+  margin-top: 25px;
+  width: 100%;
+  background: #4a90e2;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #3b7ac8;
+}
+
+button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .create-container {
+    padding: 25px;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
