@@ -1,19 +1,44 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "../../Pages/Home/Home";
-import Register from "../../Pages/Admin/Register/Register";
 import Create from "../../Pages/Candidats/Create/Create";
 import List from "../../Pages/Candidats/List/List";
 import Edit from "../../Pages/Candidats/Edit/Edit";
 import Show from "../../Pages/Candidats/Show/Show";
+import ConcoursCreate from "../../Pages/Crud/Concours/Create/Create";
+import ConcoursList from "../../Pages/Crud/Concours/List/List";
+import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
+import ConcoursEdit from "../../Pages/Crud/Concours/Edit/Edit";
+import Login from "../../Pages/Admin/Login/Login";
 
 const router = createBrowserRouter([
     {
-        path: '/Home',
+        path: '/',
         element: <Home />,
     },
     {
-        path: '/',
-        element: <Register />,
+        path: '/login',
+        element: <Login />,
+    },
+    {
+        path: "/concours",
+        children: [
+            {
+                index: true,
+                element: <ConcoursList/>
+            },
+            {
+                path: "create",
+                element: <ConcoursCreate/>
+            },
+            {
+                path: ":id/edit",
+                element: <ConcoursEdit/>
+            },
+            {
+                path: ":id/show",
+                element: <ConcoursShow/>
+            }
+        ]
     },
     {
         path: "/candidates",
@@ -37,7 +62,7 @@ const router = createBrowserRouter([
                 element: <Show />,
             },
         ],
-    },
+    }
 ])
 
 const Router = () => {

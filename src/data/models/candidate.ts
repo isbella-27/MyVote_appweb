@@ -1,3 +1,5 @@
+
+
 export type Candidate = {
     id: number;
     concourId: number;

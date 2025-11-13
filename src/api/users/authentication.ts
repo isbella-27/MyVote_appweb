@@ -7,5 +7,4 @@ export const userApi = {
         const response = await axios_instance.post('/login', formData);
         return response.data;
     },
-
 }
