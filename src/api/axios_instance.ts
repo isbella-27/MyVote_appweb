@@ -28,5 +28,3 @@ axios_instance.interceptors.response.use(
 );
 
 export default axios_instance;
-
- 

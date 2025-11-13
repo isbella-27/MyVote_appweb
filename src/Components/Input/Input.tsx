@@ -1,4 +1,4 @@
-import './Input.css'
+
 type InputProps = {
     reference: string
     label?: string
