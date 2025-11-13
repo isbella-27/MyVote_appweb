@@ -1,0 +1,133 @@
+:root {
+    --primary-color: #347ad7;
+    --primary-dark: #0056b3;
+    --background-light: #f4f7f9;
+    --card-bg: #ffffff;
+    --text-dark: #333333;
+    --text-medium: #666666;
+    --border-soft: #e0e6eb;
+    --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--background-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.create {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+}
+
+.create h1 {
+    color: var(--text-dark);
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-soft);
+    text-align: center;
+}
+
+/* --- Bouton Retour --- */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+.Container {
+    padding: 10px 0;
+}
+
+.Container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Style de base pour les labels */
+.Container label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+
+}
+
+/* Styles des champs Input et Textarea */
+.Container input[type="text"],
+.Container input[type="number"],
+.Container input[type="file"],
+.Container textarea {
+    width: 100%;
+    /* Définit la largeur ici */
+    padding: 14px 15px;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.Container textarea {
+    min-height: 120px;
+    resize: vertical;
+
+}
+
+.Container input:focus,
+.Container textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+    background-color: var(--card-bg);
+    outline: none;
+}
+
+.but {
+    padding: 14px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--card-bg) !important;
+    background-color: var(--primary-color) !important;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s, opacity 0.2s;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+    width: 100%;
+}
+
+.but:hover:not(:disabled) {
+    background-color: var(--primary-dark) !important;
+    transform: translateY(-1px);
+}
+
+.but:disabled {
+
+    background-color: #ccc !important;
+    color: var(--card-bg) !important;
+    cursor: not-allowed;
+    opacity: 0.9;
+    transform: none;
+}

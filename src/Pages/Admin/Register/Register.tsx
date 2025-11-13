@@ -28,7 +28,7 @@ export default function Register() {
             return;
         }
         localStorage.setItem("username", name);
-        navigate("/Home");
+        navigate("/candidates");
     };
 
     const [name, setName] = useState("")

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axios_instance = axios.create({
-  baseURL: 'https://focuspro.dayal-enterprises.com/public/api',
+  baseURL: 'https:192.168.1.74/MyVote_api/public/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
