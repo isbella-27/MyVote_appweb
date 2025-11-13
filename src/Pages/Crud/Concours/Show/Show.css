@@ -1,0 +1,95 @@
+.show-container {
+  max-width: 650px;
+  margin: 60px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 40px 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.show-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.show-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.show-header button {
+  background: none;
+  border: none;
+  color: #4a90e2;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.show-header button:hover {
+  color: #2d6fcf;
+}
+
+.show-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.show-image img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.show-content h2 {
+  font-size: 20px;
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.show-description {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+.show-infos {
+  background: #f9fafb;
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.show-infos p {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.show-infos strong {
+  color: #111;
+}
+
+.message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .show-container {
+    padding: 25px;
+  }
+}
