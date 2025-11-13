@@ -1,0 +1,155 @@
+/* Style Professionnel et Moderne pour la page de détails (Show) */
+
+:root {
+    --primary-color: #007bff; /* Bleu d'action (Modifier) */
+    --delete-color: #dc3545; /* Rouge (Supprimer) */
+    --background-light: #f4f7f9;
+    --card-bg: #ffffff;
+    --text-dark: #333333;
+    --text-medium: #666666;
+    --border-soft: #e0e6eb;
+    --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--background-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Conteneur Principal --- */
+.Container {
+    max-width: 800px; /* L'affichage peut être plus large que le formulaire */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.candidat-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px; 
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+    text-align: center; /* Centrer les éléments principaux de la carte */
+}
+
+/* --- Titre et Bouton Retour --- */
+h1 {
+    color: var(--text-dark);
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 25px 0; /* Marge supérieure pour l'alignement */
+    text-decoration: none;
+    color: var(--text-medium);
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: var(--primary-color);
+}
+
+/* --- Photo de Profil --- */
+.candidat-card .profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Image ronde */
+    border: 4px solid var(--border-soft);
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Détails (Nom et Paragraphes) --- */
+.candidat-card h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    border-bottom: 1px dotted var(--border-soft);
+    padding-bottom: 10px;
+}
+
+.candidat-card p {
+    font-size: 1.05em;
+    line-height: 1.6;
+    color: var(--text-medium);
+    text-align: left; /* Aligner le contenu du texte à gauche */
+    padding: 5px 0;
+    margin: 0;
+}
+
+.candidat-card strong {
+    color: var(--text-dark);
+    font-weight: 600;
+    display: inline-block;
+    min-width: 150px; /* Assure un alignement propre des deux-points */
+}
+
+/* --- BOUTONS D'ACTION (Modifier & Supprimer) --- */
+.button-actions {
+    display: flex;
+    justify-content: center; /* Centrer les boutons dans la carte */
+    gap: 15px; /* Espace entre les boutons */
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-soft);
+}
+
+.btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 150px; /* Taille fixe pour l'uniformité */
+}
+
+/* Bouton Modifier (Bleu) */
+.btn-edit {
+    background-color: var(--primary-color);
+    color: var(--card-bg); /* Texte blanc */
+}
+
+.btn-edit:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+/* Bouton Supprimer (Rouge) */
+.btn-delete {
+    background-color: var(--delete-color);
+    color: var(--card-bg); /* Texte blanc */
+}
+
+.btn-delete:hover:not(:disabled) {
+    background-color: #c82333; /* Rouge plus foncé */
+    transform: translateY(-1px);
+}
+
+.btn-delete:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- Media Queries (Réactivité) --- */
+@media (max-width: 600px) {
+    .button-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%; /* Les boutons prennent toute la largeur sur mobile */
+    }
+}

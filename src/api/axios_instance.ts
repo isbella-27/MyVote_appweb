@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-  baseURL: 'http://192.168.0.42:8000/api',
+const axios_instance = axios.create({
+  baseURL: 'https:192.168.1.74/MyVote_api/public/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-axiosInstance.interceptors.request.use(
+axios_instance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -19,7 +19,7 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-axiosInstance.interceptors.response.use(
+axios_instance.interceptors.response.use(
   (response) => response,
   (error) => {
     console.error('Erreur API:', error);
@@ -27,4 +27,4 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export default axiosInstance;
+export default axios_instance;

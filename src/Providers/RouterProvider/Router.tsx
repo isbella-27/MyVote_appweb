@@ -1,36 +1,43 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "../../Pages/Home/Home";
-import ConcoursCreate from "../../Pages/Crud/Concours/Create/Create";
-import ConcoursList from "../../Pages/Crud/Concours/List/List";
-import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
-import ConcoursEdit from "../../Pages/Crud/Concours/Edit/Edit";
+import Register from "../../Pages/Admin/Register/Register";
+import Create from "../../Pages/Candidats/Create/Create";
+import List from "../../Pages/Candidats/List/List";
+import Edit from "../../Pages/Candidats/Edit/Edit";
+import Show from "../../Pages/Candidats/Show/Show";
 
 const router = createBrowserRouter([
     {
         path: '/Home',
-        element: <Home/>,
+        element: <Home />,
     },
     {
-        path: "/concours",
+        path: '/',
+        element: <Register />,
+    },
+    {
+        path: "/candidates",
         children: [
             {
                 index: true,
-                element: <ConcoursList/>
+                element: <Create />,
             },
             {
-                path: "create",
-                element: <ConcoursCreate/>
+                path: "List",
+                element: <List />,
             },
+
             {
                 path: ":id/edit",
-                element: <ConcoursEdit/>
+                element: <Edit />,
             },
+
             {
                 path: ":id/show",
-                element: <ConcoursShow/>
-            }
-        ]
-    }
+                element: <Show />,
+            },
+        ],
+    },
 ])
 
 const Router = () => {
