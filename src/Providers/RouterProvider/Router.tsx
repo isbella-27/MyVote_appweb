@@ -9,15 +9,20 @@ import ConcoursList from "../../Pages/Crud/Concours/List/List";
 import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
 import ConcoursEdit from "../../Pages/Crud/Concours/Edit/Edit";
 import Login from "../../Pages/Admin/Login/Login";
+import Dashboard from "../../Pages/Admin/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />,
+        element: <Home/>,
     },
     {
         path: '/login',
-        element: <Login />,
+        element: <Login/>,
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard/>,
     },
     {
         path: "/concours",

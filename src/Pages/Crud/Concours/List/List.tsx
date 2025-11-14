@@ -49,9 +49,14 @@ export default function List() {
     
     <div className="list-container">
       <h1 className="list-title">Liste des concours</h1>
+      <div className="button-flex">
       <Link to="/concours/create" className="create-link">
         Crée un concour
+      </Link> 
+      <Link to="/dashboard" className="create-link">
+        Retour vers le Dashboard
       </Link>
+      </div>
 
       {isLoading ? (
         <Loader />
@@ -83,7 +88,7 @@ export default function List() {
                   {/* <td data-label="Description">{concour.description}</td> */}
                   <td data-label="Photo">
                     <img
-                      src={`http://192.168.0.42:8000/storage/${concour.image}`}
+                      src={`http://10.20.11.45:8000/storage/${concour.image}`}
                       alt={concour.name}
                       className="concour-image"
                     />

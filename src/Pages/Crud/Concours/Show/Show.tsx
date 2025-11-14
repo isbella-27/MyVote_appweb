@@ -60,7 +60,7 @@ export default function ShowConcour() {
       <div className="show-content">
         {concour.image && (
           <div className="show-image">
-            <img src={`http://192.168.0.42:8000/storage/${concour.image}`} alt={concour.name} />
+            <img src={`http://10.20.11.45:8000/storage/${concour.image}`} alt={concour.name} />
           </div>
         )}
 
