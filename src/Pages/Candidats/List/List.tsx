@@ -8,7 +8,7 @@ import SideBar from "../../../Components/Sidebar/Sidebar";
 
 export default function List() {
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    // 💡 L'état est initialisé en tableau vide
+    // L'état est initialisé en tableau vide
     const [candidates, setCandidates] = useState<Array<Candidate>>([]);
     const [successmessage, setSuccessMessage] = useState<string>("");
     const navigate = useNavigate();
