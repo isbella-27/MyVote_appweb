@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router";
 import type { Concour } from "../../../../data/models/concour.model";
 import { concourApi } from "../../../../api/concours/crud_concours";
 import Loader from "../../../../Components/Loader/Loader";
-import SideBar from "../../../../Components/Sidebar/sidebar";
+import SideBar from "../../../../Components/Sidebar/Sidebar";
 
 export default function List() {
   const [isLoading, setIsLoading] = useState<boolean>(true);

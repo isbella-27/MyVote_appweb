@@ -3,7 +3,7 @@ import "./Show.css";
 import { useNavigate, useParams } from "react-router";
 import type { Concour } from "../../../../data/models/concour.model";
 import { concourApi } from "../../../../api/concours/crud_concours";
-import SideBar from "../../../../Components/Sidebar/sidebar";
+import SideBar from "../../../../Components/Sidebar/Sidebar";
 
 export default function ShowConcour() {
   const { id } = useParams();

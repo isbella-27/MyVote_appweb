@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import Input from "../../../../Components/Input/Input";
 import { concourApi } from "../../../../api/concours/crud_concours";
 import type { Concour } from "../../../../data/models/concour.model";
-import SideBar from "../../../../Components/Sidebar/sidebar";
+import SideBar from "../../../../Components/Sidebar/Sidebar";
 
 export default function EditConcour() {
   const { id } = useParams();

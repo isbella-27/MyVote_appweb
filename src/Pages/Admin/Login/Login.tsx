@@ -121,7 +121,7 @@ export default function Login() {
 
         <div className="text-center">
           <p>
-            Pas encore de compte ? <Link to="">S’inscrire</Link>
+            Pas encore de compte ? <s><Link to="">S’inscrire</Link></s>
           </p>
         </div>
       </div>
