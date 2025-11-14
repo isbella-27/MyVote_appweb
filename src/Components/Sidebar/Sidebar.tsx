@@ -54,8 +54,11 @@ export default function SideBar() {
         <nav className="navigation">
             
           <Link to="/" >Home</Link>
-          <Link to="/concours">Liste des concours</Link>
-          <Link to="/candidates/List">Liste des candidats</Link>
+          <Link to="/">Concours en cours</Link>
+          <Link to="/">Concours terminé</Link>
+          <Link to="/">Concours à venir</Link>
+          <Link to="/">Résultats des concours</Link>
+          <Link to="/login">Se connecter</Link>
         </nav>
       </div>
     </>
