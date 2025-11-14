@@ -2,7 +2,9 @@ import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { candidatApi } from "../../../api/candidates/crud";
 import './Show.css'
-import SideBar from "../../../Components/Sidebar/sidebar";
+import SideBar from "../../../Components/Sidebar/Sidebar";
+
+
 export default function Show() {
   const navigate = useNavigate();
   const params = useParams();

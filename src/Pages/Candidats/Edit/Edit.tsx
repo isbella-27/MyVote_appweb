@@ -4,7 +4,7 @@ import { candidatApi } from '../../../api/candidates/crud';
 import './Edit.css'
 import Input from '../../../Components/Input/Input'; 
 import Button from '../../../Components/Button/Button'; 
-import SideBar from '../../../Components/Sidebar/sidebar';
+import SideBar from '../../../Components/Sidebar/Sidebar';
 
 
 
