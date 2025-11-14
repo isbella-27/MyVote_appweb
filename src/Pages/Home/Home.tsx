@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <div className="home-container">
-            <SideBar />
+      <SideBar />
 
       <h1 className="page-title">Concours disponibles</h1>
 

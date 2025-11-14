@@ -54,14 +54,7 @@ export default function List() {
                     <p>Chargement...</p>
                 ) : (
                     <>
-                        {/* 🔑 CORRECTION DE L'ERREUR (LIGNE 72) : 
-                            On utilise 'candidates &&' pour s'assurer que la variable est définie 
-                            avant de tenter de lire sa propriété 'length'. 
-                            Cependant, puisque useState([]) est utilisé, la seule cause probable 
-                            est une mauvaise réponse de l'API mal assignée. La sécurisation dans 
-                            fetchCandidates devrait suffire. Si l'erreur persiste, utilisez : 
-                            {candidates && candidates.length === 0 ? (
-                        */}
+                        
                         {candidates.length === 0 ? (
                             <p className="no-data-message">Aucun candidat n'est encore enregistré.</p>
                         ) : (

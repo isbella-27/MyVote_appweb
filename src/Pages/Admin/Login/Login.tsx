@@ -118,12 +118,6 @@ export default function Login() {
             disabled={loading}
           />
         </form>
-
-        <div className="text-center">
-          <p>
-            Pas encore de compte ? <s><Link to="">S’inscrire</Link></s>
-          </p>
-        </div>
       </div>
     </div>
     </div>
