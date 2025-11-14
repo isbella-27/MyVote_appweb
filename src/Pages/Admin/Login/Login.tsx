@@ -119,11 +119,6 @@ export default function Login() {
           />
         </form>
 
-        <div className="text-center">
-          <p>
-            Pas encore de compte ? <Link to="">S’inscrire</Link>
-          </p>
-        </div>
       </div>
     </div>
     </div>
