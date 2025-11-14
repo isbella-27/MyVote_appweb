@@ -110,6 +110,11 @@
   color: #555;
 }
 
+.button-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Responsive */
 @media screen and (max-width: 875px) {
   .concours-table {

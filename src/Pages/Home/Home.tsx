@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { concourApi } from "../../api/concours/crud_concours";
 import type { Concour } from "../../data/models/concour.model";
 import SideBar from "../../Components/Sidebar/sidebar";
+import { Link } from "react-router";
 
 
 export default function Home() {
@@ -39,6 +40,11 @@ export default function Home() {
             <SideBar />
 
       <h1 className="page-title">Concours disponibles</h1>
+      <ul>
+        <li>
+          <Link to="/login">Se connecter</Link>
+        </li>
+      </ul> <br />
 
       <div className="concours-grid">
         {concours.map((concour) => (

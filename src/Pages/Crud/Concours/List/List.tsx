@@ -52,9 +52,14 @@ export default function List() {
             <SideBar />
 
       <h1 className="list-title">Liste des concours</h1>
+      <div className="button-flex">
       <Link to="/concours/create" className="create-link">
         Crée un concour
+      </Link> 
+      <Link to="/dashboard" className="create-link">
+        Retour vers le Dashboard
       </Link>
+      </div>
 
       {isLoading ? (
         <Loader />
