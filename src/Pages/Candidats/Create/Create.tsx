@@ -4,6 +4,7 @@ import { candidatApi } from '../../../api/candidates/crud';
 import Input from '../../../Components/Input/Input';
 import Button from '../../../Components/Button/Button';
 import './Create.css'
+import SideBar from '../../../Components/Sidebar/Sidebar';
 
 export default function Create() {
     const [lastName, setLastName] = useState("");
@@ -99,6 +100,8 @@ export default function Create() {
 
     return (
         <div className='create'>
+            <SideBar />
+
             <h1>
                 Créer un candidat
             </h1>

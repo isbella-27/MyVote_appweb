@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { candidatApi } from "../../../api/candidates/crud";
 import './Show.css'
+import SideBar from "../../../Components/Sidebar/Sidebar";
 export default function Show() {
   const navigate = useNavigate();
   const params = useParams();
@@ -59,7 +60,7 @@ export default function Show() {
 
   return (
     <div>
-      {/* <SideBar /> */}
+      {<SideBar />}
       <h1>Détails du candidat</h1>
 
       <Link to="/candidates/List" className="back-button">← Retour à la liste</Link>
@@ -73,8 +74,8 @@ export default function Show() {
             <img
               src={
                 candidate.profilePhoto
-                  ? `http://192.168.1.74/MyVote_api/public/storage/${candidate.profilePhoto}`
-                  : "http://192.168.1.74/MyVote_api/public/default.jpg" // une image par défaut dans /public
+                  ? `http://127.0.0.1:8000/storage/${candidate.profilePhoto}`
+                  : "http://127.0.0.1:8000/default.jpg" // une image par défaut dans /public
               }
               alt={`${candidate.firstName} ${candidate.lastName}`}
               className="profile-photo"

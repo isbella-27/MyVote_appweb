@@ -4,6 +4,7 @@ import { candidatApi } from '../../../api/candidates/crud';
 import './Edit.css'
 import Input from '../../../Components/Input/Input'; 
 import Button from '../../../Components/Button/Button'; 
+import SideBar from '../../../Components/Sidebar/Sidebar';
 
 
 
@@ -112,7 +113,7 @@ export default function Edit() {
 
     return (
         <div className='create'>
-            {/* <SideBar /> */}
+            {<SideBar />}
             <h1>
                 Modifier le candidat ID: {params.id}
             </h1>
