@@ -1,11 +1,15 @@
+import type { AuthResponse, LoginResponse } from "../../data/request/request.model";
+import axiosInstance from "../axios_instance";
 
-import type { user } from "../../data/models/user.model";
-import axios_instance from "../axios_instance";
 
 export const userApi = {
-    login: async (formData: FormData): Promise<user> => {
-        const response = await axios_instance.post('/login', formData);
-        return response.data;
-    },
+  login: async (formData: FormData): Promise<LoginResponse> => {
+    const response = await axiosInstance.post<LoginResponse>("/login", formData);
+    return response.data;
+  },
 
-}
+    getProfile: async (): Promise<AuthResponse> => {
+    const response = await axiosInstance.get('/profile');
+    return response.data;
+  },
+};

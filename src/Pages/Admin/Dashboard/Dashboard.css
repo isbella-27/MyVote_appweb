@@ -1,0 +1,159 @@
+/* === Layout global === */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+  font-family: "Poppins", sans-serif;
+}
+
+/* === Bouton Toggle === */
+.toggle-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 1100;
+  background: #4f46e5;
+  border: none;
+  color: white;
+  padding: 10px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.toggle-btn:hover {
+  background: #3c38b5;
+}
+
+/* === Sidebar === */
+.sidebar {
+  background: #1e1e2f;
+  color: white;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  width: 260px;
+  top: 0;
+  left: 0;
+  transition: 0.35s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Sidebar fermée */
+.sidebar.closed {
+  width: 0;
+  padding: 25px 0;
+  overflow: hidden;
+}
+
+/* Sidebar ouverte */
+.sidebar.open {
+  width: 260px;
+}
+
+.sidebar-title {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-item {
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.menu-item:hover {
+  background: #2d2d44;
+}
+
+.menu-item.active {
+  background: #4f46e5;
+}
+
+.menu-item.logout {
+  margin-top: auto;
+  background: #d9534f;
+}
+
+.menu-item.logout:hover {
+  background: #c9302c;
+}
+
+/* === Contenu principal === */
+.main-content {
+  margin-top: 20px;
+  padding: 40px 30px;
+  width: 100%;
+  margin-left: 0;
+  transition: 0.35s ease-in-out;
+}
+
+/* Si sidebar ouverte = on décale */
+.main-content.shift {
+  margin-left: 260px;
+}
+
+.main-content h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* === Cards === */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #4f46e5;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-content.shift {
+    margin-left: 0; /* sidebar flottante */
+  }
+}
+
+@media (max-width: 580px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
