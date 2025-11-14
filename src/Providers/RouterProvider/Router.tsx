@@ -1,5 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "../../Pages/Home/Home";
+import Create from "../../Pages/Candidats/Create/Create";
+import List from "../../Pages/Candidats/List/List";
+import Edit from "../../Pages/Candidats/Edit/Edit";
+import Show from "../../Pages/Candidats/Show/Show";
 import ConcoursCreate from "../../Pages/Crud/Concours/Create/Create";
 import ConcoursList from "../../Pages/Crud/Concours/List/List";
 import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
@@ -40,6 +44,29 @@ const router = createBrowserRouter([
                 element: <ConcoursShow/>
             }
         ]
+    },
+    {
+        path: "/candidates",
+        children: [
+            {
+                index: true,
+                element: <Create />,
+            },
+            {
+                path: "List",
+                element: <List />,
+            },
+
+            {
+                path: ":id/edit",
+                element: <Edit />,
+            },
+
+            {
+                path: ":id/show",
+                element: <Show />,
+            },
+        ],
     }
 ])
 
