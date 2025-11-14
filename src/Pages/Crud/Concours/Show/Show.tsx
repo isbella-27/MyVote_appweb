@@ -3,6 +3,7 @@ import "./Show.css";
 import { useNavigate, useParams } from "react-router";
 import type { Concour } from "../../../../data/models/concour.model";
 import { concourApi } from "../../../../api/concours/crud_concours";
+import SideBar from "../../../../Components/Sidebar/sidebar";
 
 export default function ShowConcour() {
   const { id } = useParams();
@@ -52,6 +53,8 @@ export default function ShowConcour() {
 
   return (
     <div className="show-container">
+            <SideBar />
+
       <div className="show-header">
         <button onClick={goToBack}>← Retour</button>
         <h1>Détails du concours</h1>
@@ -60,7 +63,7 @@ export default function ShowConcour() {
       <div className="show-content">
         {concour.image && (
           <div className="show-image">
-            <img src={`http://192.168.0.42:8000/storage/${concour.image}`} alt={concour.name} />
+            <img src={`http://127.0.0.1:8000/storage/${concour.image}`} alt={concour.name} />
           </div>
         )}
 

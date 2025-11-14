@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import Input from "../../../../Components/Input/Input";
 import { concourApi } from "../../../../api/concours/crud_concours";
 import type { Concour } from "../../../../data/models/concour.model";
+import SideBar from "../../../../Components/Sidebar/sidebar";
 
 export default function EditConcour() {
   const { id } = useParams();
@@ -151,6 +152,8 @@ export default function EditConcour() {
 
   return (
     <div className="edit-container">
+            <SideBar />
+
       <div className="edit-header">
         <button type="button" onClick={goToBack}>← Retour</button>
         <h1>Modifier le concours</h1>
