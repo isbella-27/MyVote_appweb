@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router";
 import type { Concour } from "../../../../data/models/concour.model";
 import { concourApi } from "../../../../api/concours/crud_concours";
 import Loader from "../../../../Components/Loader/Loader";
+import SideBar from "../../../../Components/Sidebar/sidebar";
 
 export default function List() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -48,6 +49,8 @@ export default function List() {
   return (
     
     <div className="list-container">
+            <SideBar />
+
       <h1 className="list-title">Liste des concours</h1>
       <div className="button-flex">
       <Link to="/concours/create" className="create-link">
@@ -88,7 +91,7 @@ export default function List() {
                   {/* <td data-label="Description">{concour.description}</td> */}
                   <td data-label="Photo">
                     <img
-                      src={`http://10.20.11.45:8000/storage/${concour.image}`}
+                      src={`http://127.0.0.1:8000/storage/${concour.image}`}
                       alt={concour.name}
                       className="concour-image"
                     />

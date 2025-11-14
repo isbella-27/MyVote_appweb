@@ -1,0 +1,118 @@
+/* Sidebar */
+.side-bar {
+  width: 250px;
+  height: 100vh;
+  background-color: #15171c;
+  color: white;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 900; /* derrière le bouton toggle */
+}
+
+/* Sidebar fermée */
+.side-bar.closed {
+  transform: translateX(-100%);
+}
+
+/* Sidebar ouverte */
+.side-bar.open {
+  transform: translateX(0);
+}
+
+/* Bouton toggle */
+.toggle-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: #15171c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus de la sidebar */
+  border-radius: 5px;
+  transition: left 0.3s ease;
+}
+
+/* Décalage du bouton quand la sidebar est ouverte */
+.toggle-btn.shifted {
+  left: 260px; /* légèrement à droite de la sidebar */
+}
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  stroke: white;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
+}
+
+.close-btn:hover {
+  background-color: #333;
+  border-radius: 4px;
+}
+
+.close-btn svg {
+  stroke: white;
+  width: 24px;
+  height: 24px;
+}
+
+
+/* Hover */
+.toggle-btn:hover {
+  background-color: #333;
+}
+
+/* Icône SVG */
+.size-icon {
+  stroke: white;
+  width: 24px;
+  height: 24px;
+  fill: none; /* utile si tu utilises des icônes outline */
+}
+
+/* Sécurité : forcer le stroke blanc sur tous les SVG du bouton */
+.toggle-btn svg {
+  stroke: white;
+  width: 24px;
+  height: 24px;
+}
+
+.navigation {
+    display: block; 
+    padding: 0; 
+    margin-top: 20px;
+}
+
+/* Styles pour chaque lien de navigation */
+.side-bar .navigation a {
+    display: block; 
+    
+    /* Espacement pour le look que vous avez montré */
+    padding: 12px 20px; 
+    margin-bottom: 5px;
+    
+    color: white; 
+    text-decoration: none; 
+    font-size: 1.1em;
+    font-weight: 500;
+    
+    border-radius: 6px; 
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Effet de survol (Hover) sur les liens */
+.side-bar .navigation a:hover {
+    background-color: #2c313a; 
+    color: white; 
+}
+
+

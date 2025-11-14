@@ -3,6 +3,7 @@ import "./Home.css";
 import { useNavigate } from "react-router";
 import { concourApi } from "../../api/concours/crud_concours";
 import type { Concour } from "../../data/models/concour.model";
+import SideBar from "../../Components/Sidebar/sidebar";
 import { Link } from "react-router";
 
 
@@ -36,6 +37,8 @@ export default function Home() {
 
   return (
     <div className="home-container">
+            <SideBar />
+
       <h1 className="page-title">Concours disponibles</h1>
       <ul>
         <li>
@@ -49,7 +52,7 @@ export default function Home() {
             <div className="image-container">
               {concour.image ? (
                 <img
-                  src={`http://10.20.11.45:8000/storage/${concour.image}`}
+                  src={`http://127.0.0.1:8000/storage/${concour.image}`}
                   alt={concour.name}
                   className="concours-image"
                 />
