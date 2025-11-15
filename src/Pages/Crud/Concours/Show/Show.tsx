@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Show.css";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import type { Concour } from "../../../../data/models/concour.model";
 import { concourApi } from "../../../../api/concours/crud_concours";
 import SideBar from "../../../../Components/Sidebar/Sidebar";
@@ -76,6 +76,12 @@ export default function ShowConcour() {
           <p><strong>Date de début :</strong> {concour.start_at ? new Date(concour.start_at).toLocaleDateString() : "Non précisée"}</p>
           <p><strong>Date de fin :</strong> {concour.end_at ? new Date(concour.end_at).toLocaleDateString() : "Non précisée"}</p>
         </div>
+
+        <Link to={`/concours/${id}/candidates`}>
+          <button>
+            Voir les candidats
+          </button>
+        </Link>
       </div>
     </div>
   );
