@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
-import "./Create.css";
+import "./CreateCandidate.css";
 import { candidateApi } from "../../../api/candidates/crud_candidates";
 
 export default function CreateCandidate() {
@@ -58,6 +58,10 @@ export default function CreateCandidate() {
 
   return (
     <div className="create-container">
+      <button type="button" onClick={() => navigate(-1)} className="back-btn">
+        ← Retour
+      </button>
+
       <h1>Créer un candidat</h1>
 
       {error && <div className="error-message">{error}</div>}
