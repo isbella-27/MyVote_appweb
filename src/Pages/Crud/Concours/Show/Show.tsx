@@ -3,6 +3,7 @@ import "./Show.css";
 import { Link, useNavigate, useParams } from "react-router";
 import type { Concour } from "../../../../data/models/concour.model";
 import { concourApi } from "../../../../api/concours/crud_concours";
+import SideBar from "../../../../Components/Sidebar/Sidebar";
 
 export default function ShowConcour() {
   const { id } = useParams();
@@ -52,6 +53,8 @@ export default function ShowConcour() {
 
   return (
     <div className="show-container">
+            <SideBar />
+
       <div className="show-header">
         <button onClick={goToBack}>← Retour</button>
         <h1>Détails du concours</h1>

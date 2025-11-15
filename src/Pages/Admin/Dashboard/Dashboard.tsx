@@ -38,7 +38,8 @@ export default function Dashboard() {
           <Link to="/concours">Concours</Link>
           <a className="menu-item">Profil</a>
           <a className="menu-item">Paramètres</a>
-          <a className="menu-item logout">Déconnexion</a>
+          <a className="menu-item logout"><Link to="/">Déconnexion</Link></a>
+
         </nav>
       </aside>
 

@@ -1,159 +1,195 @@
 /* === Layout global === */
 .dashboard-container {
-  display: flex;
-  min-height: 100vh;
-  background: #f4f6f9;
-  font-family: "Poppins", sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+    font-family: "Poppins", sans-serif;
 }
 
 /* === Bouton Toggle === */
 .toggle-btn {
-  position: fixed;
-  top: 18px;
-  left: 18px;
-  z-index: 1100;
-  background: #4f46e5;
-  border: none;
-  color: white;
-  padding: 10px 13px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: 0.3s;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 1100;
+    background: #4f46e5;
+    border: none;
+    color: white;
+    padding: 10px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
 .toggle-btn:hover {
-  background: #3c38b5;
+    background: #3c38b5;
 }
 
 /* === Sidebar === */
 .sidebar {
-  background: #1e1e2f;
-  color: white;
-  padding: 25px 20px;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  height: 100%;
-  width: 260px;
-  top: 0;
-  left: 0;
-  transition: 0.35s ease-in-out;
-  z-index: 1000;
-  overflow-y: auto;
+    background: #1e1e2f;
+    color: white;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    width: 260px;
+    top: 0;
+    left: 0;
+    transition: 0.35s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
 }
 
 /* Sidebar fermée */
 .sidebar.closed {
-  width: 0;
-  padding: 25px 0;
-  overflow: hidden;
+    width: 0;
+    padding: 25px 0;
+    overflow: hidden;
 }
 
 /* Sidebar ouverte */
 .sidebar.open {
-  width: 260px;
+    width: 260px;
 }
 
 .sidebar-title {
-  text-align: center;
-  font-size: 1.4rem;
-  margin-bottom: 40px;
-  font-weight: 600;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    font-weight: 600;
 }
 
 .sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.menu-item {
-  padding: 12px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: 0.3s;
-  white-space: nowrap;
+/* --- Style de base pour les éléments de menu (y compris les <a> générés par Link) --- */
+.menu-item, 
+.sidebar-menu a:not(.menu-item a) {
+    display: block;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    white-space: nowrap;
+    text-decoration: none; /* Pour les liens <Link> */
+    color: white; /* Pour les liens <Link> */
+    cursor: pointer;
 }
 
-.menu-item:hover {
-  background: #2d2d44;
+.menu-item:hover,
+.sidebar-menu a:not(.menu-item a):hover {
+    background: #2d2d44;
 }
 
 .menu-item.active {
-  background: #4f46e5;
+    background: #4f46e5;
 }
 
 .menu-item.logout {
-  margin-top: auto;
-  background: #d9534f;
+    margin-top: auto;
+    background: #d9534f;
+    padding: 0; 
+    padding: 12px 15px;
+
+}
+
+.menu-item.logout a {
+    display: block;
+    color: white; 
+    text-decoration: none;
 }
 
 .menu-item.logout:hover {
-  background: #c9302c;
+    background: #c9302c;
 }
 
 /* === Contenu principal === */
 .main-content {
-  margin-top: 20px;
-  padding: 40px 30px;
-  width: 100%;
-  margin-left: 0;
-  transition: 0.35s ease-in-out;
+    margin-top: 20px;
+    padding: 40px 30px;
+    width: 100%;
+    margin-left: 0;
+    transition: 0.35s ease-in-out;
 }
 
 /* Si sidebar ouverte = on décale */
 .main-content.shift {
-  margin-left: 260px;
+    margin-left: 260px;
 }
 
 .main-content h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
 }
 
 /* === Cards === */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .card {
-  background: white;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
 }
 
 .card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #4f46e5;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #4f46e5;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+    transform: translateY(-4px);
 }
 
 /* === Responsive === */
+
+/* Décalage du bouton uniquement sur grand écran */
+@media (min-width: 701px) {
+    .sidebar.open ~ .toggle-btn {
+        left: calc(260px + 18px); 
+        background: #3c38b5;
+    }
+}
+
 @media (max-width: 900px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Sur petit écran, on ne décale jamais le contenu */
+    .main-content, 
+    .main-content.shift {
+        margin-left: 0 !important; 
+    }
+    
+    /* Le bouton reste à gauche sur mobile */
+    .toggle-btn {
+        left: 18px; 
+    }
 }
 
 @media (max-width: 700px) {
-  .main-content.shift {
-    margin-left: 0; /* sidebar flottante */
-  }
+    /* Sur mobile/tablette, la sidebar doit se superposer, pas décaler. */
+    .main-content {
+        padding-top: 70px; /* Plus d'espace pour le bouton fixe */
+    }
 }
 
 @media (max-width: 580px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }

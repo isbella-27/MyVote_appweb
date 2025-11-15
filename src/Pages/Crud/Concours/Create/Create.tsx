@@ -3,6 +3,7 @@ import "./Create.css";
 import { useNavigate } from "react-router";
 import Input from "../../../../Components/Input/Input";
 import { concourApi } from "../../../../api/concours/crud_concours";
+import SideBar from "../../../../Components/Sidebar/Sidebar";
 
 export default function CreateConcour() {
   const [name, setName] = useState("");
@@ -185,6 +186,8 @@ export default function CreateConcour() {
   
   return (
     <div className="create-container">
+            <SideBar />
+
       <div className="create-header">
         <button type="button" onClick={goToBack}>← Retour</button>
         <h1>Créer un concours</h1>

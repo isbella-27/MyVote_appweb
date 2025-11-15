@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import "./Login.css";
 import Button from "../../../Components/Button/Button";
 import { userApi } from "../../../api/users/authentication";
+import SideBar from "../../../Components/Sidebar/Sidebar";
 
 
 const loginSchema = z.object({
@@ -71,6 +72,8 @@ export default function Login() {
   };
 
   return (
+    <div className="home-container">
+        <SideBar />
     <div className="content-contenair">
     <div className="app-container">
       <div className="header-area">
@@ -115,13 +118,8 @@ export default function Login() {
             disabled={loading}
           />
         </form>
-
-        <div className="text-center">
-          <p>
-            Pas encore de compte ? <Link to="">S’inscrire</Link>
-          </p>
-        </div>
       </div>
+    </div>
     </div>
     </div>
   );
