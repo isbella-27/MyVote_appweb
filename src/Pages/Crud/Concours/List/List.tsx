@@ -37,7 +37,7 @@ export default function List() {
     navigate(`/concours/${id}/edit`);
   };
 
-  const handleShowCandidate = (id: number) => {
+  const handleShowConcour = (id: number) => {
     navigate(`/concours/${id}/show`);
   };
 
@@ -88,7 +88,7 @@ export default function List() {
                   {/* <td data-label="Description">{concour.description}</td> */}
                   <td data-label="Photo">
                     <img
-                      src={`http://10.20.11.45:8000/storage/${concour.image}`}
+                      src={`http://127.0.0.1:8000/storage/${concour.image}`}
                       alt={concour.name}
                       className="concour-image"
                     />
@@ -100,7 +100,7 @@ export default function List() {
                   <td data-label="Opérations" className="operation-button"> 
                     <button
                       type="button"
-                      onClick={() => handleShowCandidate(concour.id)}
+                      onClick={() => handleShowConcour(concour.id)}
                       className="action-button"
                     >
                       <svg

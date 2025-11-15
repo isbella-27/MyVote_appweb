@@ -49,7 +49,7 @@ export default function Home() {
             <div className="image-container">
               {concour.image ? (
                 <img
-                  src={`http://10.20.11.45:8000/storage/${concour.image}`}
+                  src={`http://127.0.0.1:8000/storage/${concour.image}`}
                   alt={concour.name}
                   className="concours-image"
                 />

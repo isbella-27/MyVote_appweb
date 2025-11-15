@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "../../Pages/Home/Home";
-import Create from "../../Pages/Candidats/Create/Create";
-import List from "../../Pages/Candidats/List/List";
-import Edit from "../../Pages/Candidats/Edit/Edit";
-import Show from "../../Pages/Candidats/Show/Show";
+import CandidatesCreate from "../../Pages/Candidates/Create/Create";
+import CandidatesList from "../../Pages/Candidates/List/List";
+import CandidatesEdit from "../../Pages/Candidates/Edit/Edit";
+import CandidatesShow from "../../Pages/Candidates/Show/Show";
 import ConcoursCreate from "../../Pages/Crud/Concours/Create/Create";
 import ConcoursList from "../../Pages/Crud/Concours/List/List";
 import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
@@ -46,25 +46,25 @@ const router = createBrowserRouter([
         ]
     },
     {
+        path: "/concours/:id/candidates",
+        element: <CandidatesList />,
+    },
+    {
         path: "/candidates",
         children: [
             {
-                index: true,
-                element: <Create />,
-            },
-            {
-                path: "List",
-                element: <List />,
+                path: "create",
+                element: <CandidatesCreate />,
             },
 
             {
                 path: ":id/edit",
-                element: <Edit />,
+                element: <CandidatesEdit />,
             },
 
             {
                 path: ":id/show",
-                element: <Show />,
+                element: <CandidatesShow />,
             },
         ],
     }
