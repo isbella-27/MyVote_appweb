@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "../../Pages/Home/Home";
-import CandidatesCreate from "../../Pages/Candidates/Create/Create";
-import CandidatesList from "../../Pages/Candidates/List/List";
-import CandidatesEdit from "../../Pages/Candidates/Edit/Edit";
-import CandidatesShow from "../../Pages/Candidates/Show/Show";
+import CandidatesCreate from "../../Pages/Candidates/Create/CreateCandidate";
+import CandidatesList from "../../Pages/Candidates/List/ListCandidates";
+import CandidatesEdit from "../../Pages/Candidates/Edit/EditCandidate";
+import CandidatesShow from "../../Pages/Candidates/Show/ShowCandidate";
 import ConcoursCreate from "../../Pages/Crud/Concours/Create/Create";
 import ConcoursList from "../../Pages/Crud/Concours/List/List";
 import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
