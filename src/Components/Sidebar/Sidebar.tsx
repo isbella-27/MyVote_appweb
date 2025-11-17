@@ -1,66 +1,71 @@
-import { Link } from "react-router";
 import { useState } from "react";
-import "./Sidebar.css"; // Assurez-vous d'avoir le CSS adéquat
+import "./Sidebar.css";
+import { Link, useNavigate } from "react-router";
+import { logout } from "../../api/users/authentication";
+import logo from "../../../public/logo.png";
 
-export default function SideBar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+
+export default function Dashboard() {
+  const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
+  const isAuthenticated = !!localStorage.getItem("token");
+
+
+  const handleLogout = () => {
+    logout();               
+    navigate("/");          
   };
-
-  // 🗑️ Le style inline 'linkStyle' n'est plus utilisé.
 
   return (
     <>
-      {/* Bouton d’ouverture visible uniquement quand la sidebar est fermée */}
-      {!sidebarOpen && (
-        <button onClick={toggleSidebar} className="toggle-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-icon"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-      )}
 
-      {/* Sidebar */}
-      <div className={`side-bar ${sidebarOpen ? "open" : "closed"}`}>
-        {/* Bouton de fermeture intégré dans la sidebar */}
-        <button onClick={toggleSidebar} className="close-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-icon"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+      {/* Bouton hamburger (mobile + desktop) */}
+      <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? "✖" : "☰"}
+      </button>
 
-        <nav className="navigation">
-            
-          <Link to="/" >Home</Link>
-          <Link to="/">Concours en cours</Link>
-          <Link to="/">Concours terminé</Link>
-          <Link to="/">Concours à venir</Link>
-          <Link to="/">Résultats des concours</Link>
-          <Link to="/login">Se connecter</Link>
+      {/* --- Sidebar --- */}
+      <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
+        {!isAuthenticated && (
+          <div className='header-form'>
+          <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
+          <h2 className="sidebar-title">Votify</h2>
+          </div>
+        )}
+
+        {isAuthenticated && (
+          <div className='header-form'>
+          <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
+          <h2 className="sidebar-title">Dashboard</h2>
+          </div>
+        )}
+       
+
+        <nav className="sidebar-menu">          
+
+          {/* Visible seulement si NON connecté */}
+          {!isAuthenticated && (
+            <>
+              <Link to="/" className="menu-item active">Home</Link>
+              <Link to="/">Résultats des concours</Link>
+              <Link to="/login">Se connecter</Link>
+            </>
+          )}
+
+          {/* Visible seulement si connecté */}
+          {isAuthenticated && (
+          <>
+            <Link to="/dashboard" className="menu-item active">Accueil</Link>
+            <Link to="/concours">Concours & Candidats</Link>
+            <Link to="/profile">Profil</Link>
+            <a className="menu-item">Paramètres</a>
+            <a className="menu-item logout" onClick={handleLogout}>
+              Déconnexion
+            </a>
+          </> )} 
         </nav>
-      </div>
+      </aside>
     </>
   );
 }

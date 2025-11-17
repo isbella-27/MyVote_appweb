@@ -13,3 +13,9 @@ export const userApi = {
     return response.data;
   },
 };
+
+export function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");       
+}
+

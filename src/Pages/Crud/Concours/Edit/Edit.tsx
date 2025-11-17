@@ -156,7 +156,7 @@ export default function EditConcour() {
 
       <div className="edit-header">
         <button type="button" onClick={goToBack}>← Retour</button>
-        <h1>Modifier le concours</h1>
+        <h1>Modifier le concour</h1>
       </div>
 
       {successMessage && <div className="message success">{successMessage}</div>}

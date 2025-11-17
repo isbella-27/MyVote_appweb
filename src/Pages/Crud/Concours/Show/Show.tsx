@@ -57,7 +57,7 @@ export default function ShowConcour() {
 
       <div className="show-header">
         <button onClick={goToBack}>← Retour</button>
-        <h1>Détails du concours</h1>
+        <h1>Détails du concour</h1>
       </div>
 
       <div className="show-content">
@@ -71,7 +71,7 @@ export default function ShowConcour() {
         <p className="show-description">{concour.description || "Aucune description disponible"}</p>
 
         <div className="show-infos">
-          <p><strong>Statut :</strong> {concour.status === "BROUILLON" ? "Brouillon" : concour.status === "EN_COURS" ? "En cours" : "Terminé"}</p>
+          <p><strong>Statut :</strong> {concour.status === "A_VENIR" ? "À venir" : concour.status === "EN_COURS" ? "En cours" : "Terminé"}</p>
           <p><strong>Prix par vote :</strong> {concour.price_per_vote ? concour.price_per_vote + " FCFA" : "Non défini"}</p>
           <p><strong>Date de début :</strong> {concour.start_at ? new Date(concour.start_at).toLocaleDateString() : "Non précisée"}</p>
           <p><strong>Date de fin :</strong> {concour.end_at ? new Date(concour.end_at).toLocaleDateString() : "Non précisée"}</p>
