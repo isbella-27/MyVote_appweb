@@ -190,7 +190,7 @@ export default function CreateConcour() {
 
       <div className="create-header">
         <button type="button" onClick={goToBack}>← Retour</button>
-        <h1>Créer un concours</h1>
+        <h1>Créer un concour</h1>
       </div>
 
       {successMessage && <div className="message success">{successMessage}</div>}
@@ -219,9 +219,9 @@ export default function CreateConcour() {
 
         <label htmlFor="status">Statut *</label>
         <select id="status" value={status} onChange={(e) => setStatus(e.target.value as any)}>
-          <option value="BROUILLON">Brouillon</option>
           <option value="EN_COURS">En cours</option>
           <option value="TERMINE">Terminé</option>
+          <option value="A_VENIR">À venir</option>
         </select>
         {errors.status && <p className="input-error">{errors.status}</p>}
 

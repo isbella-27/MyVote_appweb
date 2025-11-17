@@ -10,6 +10,8 @@ import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
 import ConcoursEdit from "../../Pages/Crud/Concours/Edit/Edit";
 import Login from "../../Pages/Admin/Login/Login";
 import Dashboard from "../../Pages/Admin/Dashboard/Dashboard";
+import Profile from "../../Pages/Admin/Profile/Profile";
+import PublicConcour from "../../Pages/PublicConcour/PublicConcour";
 
 const router = createBrowserRouter([
     {
@@ -17,8 +19,16 @@ const router = createBrowserRouter([
         element: <Home/>,
     },
     {
+        path: '/concours/:id/public',
+        element: <PublicConcour/>,
+    },
+    {
         path: '/login',
         element: <Login/>,
+    },
+    {
+        path: '/profile',
+        element: <Profile/>,
     },
     {
         path: '/dashboard',
