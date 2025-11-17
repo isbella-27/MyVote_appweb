@@ -22,6 +22,7 @@ export default function List() {
     const { id: concours_id } = useParams<RouteParams>(); 
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    // 💡 L'état est initialisé en tableau vide
     const [candidates, setCandidates] = useState<Array<Candidate>>([]);
     const [successmessage, setSuccessMessage] = useState<string>("");
     const [errormessage, setErrorMessage] = useState<string>("");
