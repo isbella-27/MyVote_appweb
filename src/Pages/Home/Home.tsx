@@ -12,6 +12,7 @@ export default function Home() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // ... (useEffect et fetchConcours restent inchangés) ...
   useEffect(() => {
     const fetchConcours = async () => {
       try {
@@ -27,8 +28,13 @@ export default function Home() {
     };
     fetchConcours();
   }, []);
+  
+  // 🎯 MODIFICATION ICI : Naviguer vers la liste des candidats du concours
+  const goToCandidatesList = (id: number) => {
+    // 💡 Assurez-vous que cette route correspond à votre configuration React Router
+    navigate(`/concours/${id}/candidates`); 
+  };
 
-  const goToDetails = (id: number) => navigate(`/concours/${id}/show`);
 
   if (isLoading) return <div className="loading">Chargement des concours...</div>;
   if (error) return <div className="error">{error}</div>;
@@ -42,7 +48,12 @@ export default function Home() {
 
       <div className="concours-grid">
         {concours.map((concour) => (
-          <div key={concour.id} className="concour-card" onClick={() => goToDetails(concour.id)}>
+          <div 
+            key={concour.id} 
+            className="concour-card" 
+            // 🎯 MODIFICATION ICI : Appeler la nouvelle fonction
+            onClick={() => goToCandidatesList(concour.id)}
+          >
             <div className="image-container">
               {concour.image ? (
                 <img

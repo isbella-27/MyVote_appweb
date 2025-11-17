@@ -17,18 +17,15 @@
 /* --------------------------------------------------- */
 
 .list-page {
-    /* Le composant SideBar est fixé (position: fixed), 
-       le contenu principal doit le contourner. */
     display: flex;
     min-height: 100vh;
     background-color: var(--background-light);
 }
 
 .list-content {
-    /* Décalage pour laisser la place à la SideBar fermée (ou toujours visible sur desktop) */
     margin-left: var(--sidebar-width); 
     max-width: calc(100% - var(--sidebar-width));
-    width: 100%; /* Prend l'espace restant */
+    width: 100%;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -52,7 +49,7 @@
     color: var(--text-dark);
 }
 
-.create-button {
+.create-button, .back-button {
     display: inline-block;
     background-color: var(--primary-color);
     color: white;
@@ -64,12 +61,20 @@
     white-space: nowrap;
 }
 
-.create-button:hover {
+.back-button {
+    background-color: var(--text-medium);
+    margin-right: 10px;
+}
+
+.create-button:hover, .back-button:hover {
     background-color: var(--primary-hover);
     transform: translateY(-1px);
 }
 
-/* Message de succès ou d'absence de données */
+.back-button:hover {
+    background-color: #5a6268;
+}
+
 .success-message {
     padding: 15px;
     background-color: var(--success-color);
@@ -91,81 +96,149 @@
 }
 
 /* --------------------------------------------------- */
-/* --- 3. Grille des Candidats (Grid) --- */
+/* --- 3. Grille des Candidats (Style Image Pleine Largeur) --- */
 /* --------------------------------------------------- */
 
 .candidates-grid {
-    /* Utilise CSS Grid pour un affichage en colonnes flexible */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-/* Style de la carte individuelle (Link) */
 .candidate-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none; /* Retirer le soulignement du Link */
     background-color: var(--card-bg);
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex; 
+    flex-direction: column; /* Image au-dessus, Détails en dessous */
+    position: relative; 
+    text-decoration: none;
+    color: inherit;
+    min-height: 400px; /* Hauteur minimale de la carte pour le style visuel */
 }
 
 .candidate-card:hover {
-    transform: translateY(-5px); /* Léger soulèvement au survol */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
 }
 
-/* Photo de Profil */
+/* Conteneur de la photo (occupe toute la largeur, hauteur fixe) */
 .profile-photo-container {
-    margin-bottom: 15px;
+    width: 100%;
+    height: 250px; /* 🎯 Hauteur de la zone image (ajustez si besoin) */
+    overflow: hidden;
+    position: relative; 
 }
 
 .profile-photo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary-color);
-    box-shadow: 0 0 0 5px rgba(52, 122, 215, 0.2); /* Anneau autour de l'image */
+    width: 100%;
+    height: 100%;
+    /* 🎯 CRITIQUE: L'image remplit le conteneur en coupant si nécessaire */
+    object-fit: cover; 
+    display: block;
 }
 
-/* Détails de la carte */
-.card-details {
-    text-align: center;
+/* Badge "EN COURS" superposé */
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--success-color); /* Utilisation de la variable */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+/* Texte superposé (MissTogo2026) */
+.candidate-name-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    background: rgba(0, 0, 0, 0.65); /* Fond sombre semi-transparent */
+    color: white;
+    padding: 15px 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Détails sous l'image (Nom, Description, Actions) */
+.card-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .candidate-name {
-    font-size: 1.6em;
-    color: var(--primary-color);
+    /* Si le nom n'est pas superposé, utilisez ce style, sinon il est redondant */
+    font-size: 1.5em;
+    font-weight: 800;
+    color: var(--text-dark);
     margin-bottom: 5px;
-    font-weight: 700;
+    text-align: left;
 }
 
 .candidate-description {
     font-size: 0.9em;
     color: var(--text-medium);
-    margin-top: 10px;
-    /* Limiter la description à quelques lignes */
+    margin: 5px 0 15px;
     display: -webkit-box;
     -webkit-line-clamp: 3; 
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 3.9em; /* Pour maintenir la hauteur des cartes cohérente */
+    min-height: 3.9em; 
+    flex-grow: 1;
+    text-align: left;
 }
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-soft);
+}
+
+.edit-button, .delete-button {
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.edit-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+.delete-button {
+    background-color: #dc3545; /* Rouge standard pour supprimer */
+    color: white;
+}
+.edit-button:hover { background-color: var(--primary-hover); }
+.delete-button:hover { background-color: #c82333; }
+
 
 /* --------------------------------------------------- */
 /* --- 4. Réactivité (Mobile) --- */
 /* --------------------------------------------------- */
 
 @media (max-width: 992px) {
-    /* Adapter le contenu quand la sidebar est repliée sur mobile */
     .list-content {
         margin-left: 0;
         max-width: 100%;
@@ -183,28 +256,7 @@
     }
 
     .candidates-grid {
-        /* Simplifier la grille sur les petits écrans */
         grid-template-columns: 1fr;
     }
-
-    .candidate-card {
-        flex-direction: row; /* Passer à un layout ligne */
-        text-align: left;
-        align-items: flex-start;
-        padding: 15px;
-    }
-
-    .profile-photo-container {
-        margin-right: 15px;
-        margin-bottom: 0;
-    }
-
-    .profile-photo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .card-details {
-        text-align: left;
-    }
+    /* Les cartes peuvent rester en mode image pleine largeur même sur mobile */
 }

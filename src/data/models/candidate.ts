@@ -2,11 +2,11 @@
 
 export type Candidate = {
     id: number;
-    concourId: number;
-    lastName: string;
-    firstName: string;
+    concour_id: number;
+    last_name: string;
+    first_name: string;
     nationality: string;
-    fullDescription: string;
-    profilePhoto: string;
-    voteCount: number;
+    full_description: string;
+    profile_photo: string;
+    votes_count: number;
 }

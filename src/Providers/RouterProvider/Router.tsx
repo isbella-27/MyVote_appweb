@@ -42,7 +42,15 @@ const router = createBrowserRouter([
             {
                 path: ":id/show",
                 element: <ConcoursShow/>
-            }
+            },
+            {
+                path: ":id/candidates",
+                element: <List />, 
+            },
+            {
+                path: ":id/candidates/create", 
+                element: <Create />,
+            },
         ]
     },
     {

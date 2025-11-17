@@ -75,23 +75,26 @@ export default function Show() {
           <div className="candidat-card">
             <img
               src={
-                candidate.profilePhoto
-                  ? `http://127.0.0.1:8000/storage/${candidate.profilePhoto}`
+                candidate.profile_photo
+                  ? `http://127.0.0.1:8000/storage/${candidate.profile_photo}`
                   : "http://127.0.0.1:8000/default.jpg" // une image par défaut dans /public
               }
-              alt={`${candidate.firstName} ${candidate.lastName}`}
+              alt={`${candidate.first_name} ${candidate.last_name}`}
               className="profile-photo"
             />
 
             <h2>
-              {candidate.firstName} {candidate.lastName}
+              {candidate.first_name} {candidate.last_name}
             </h2>
             
             <p>
-              <strong>Description complète :</strong> {candidate.fullDescription}
+              <strong>Nationalité :</strong> {candidate.nationality}
             </p>
             <p>
-              <strong>Nombre de vote :</strong> {candidate.votesCount}
+              <strong>Description complète :</strong> {candidate.full_description}
+            </p>
+            <p>
+              <strong>Nombre de vote :</strong> {candidate.votes_count}
             </p>
             
             {/* BOUTONS D'ACTION */}
