@@ -2,8 +2,7 @@ import { useState } from "react";
 import "./Sidebar.css";
 import { Link, useNavigate } from "react-router";
 import { logout } from "../../api/users/authentication";
-import logo from "../../../public/logo.png";
-
+import logo from '../../assets/logo.png'; 
 
 
 export default function Dashboard() {
