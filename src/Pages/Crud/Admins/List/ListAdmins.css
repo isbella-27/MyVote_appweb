@@ -1,0 +1,158 @@
+/* ===== PAGE WRAPPER ===== */
+.admins-page {
+  padding: 25px;
+  max-width: 1100px;
+  margin: auto;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== TITRE ===== */
+.list-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+/* ===== BUTTONS WRAPPER ===== */
+.button-flex {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn-primary,
+.btn-secondary,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Primary: create */
+.btn-primary {
+  background: #2563eb;
+  color: white;
+}
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+/* Secondary: back */
+.btn-secondary {
+  background: #6b7280;
+  color: white;
+}
+.btn-secondary:hover {
+  background: #4b5563;
+}
+
+/* Info: view */
+.btn-info {
+  background: #3b82f6;
+  color: white;
+}
+.btn-info:hover {
+  background: #1d4ed8;
+}
+
+/* Warning: edit */
+.btn-warning {
+  background: #f59e0b;
+  color: white;
+}
+.btn-warning:hover {
+  background: #d97706;
+}
+
+/* Danger: delete */
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* ===== TABLE ===== */
+.table-admins {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+/* Header */
+.table-admins thead {
+  background: #f3f4f6;
+}
+
+.table-admins th {
+  padding: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  text-align: left;
+}
+
+/* Rows */
+.table-admins td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  color: #1f2937;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Hover row */
+.table-admins tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 720px) {
+  .actions {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .button-flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .table-admins th,
+  .table-admins td {
+    padding: 10px;
+  }
+}
