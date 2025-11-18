@@ -23,7 +23,7 @@
 
 .concour-image-wrapper {
   width: 100%;
-  max-width: 800px; /* limite largeur pour éviter déformation */
+  max-width: 800px;
   max-height: 400px;
   overflow: hidden;
   border-radius: 12px;
@@ -32,7 +32,7 @@
 .concour-banner {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ratio conservé */
+  object-fit: cover;
   object-position: center;
 }
 
@@ -61,6 +61,7 @@
   color: #333;
 }
 
+/* --- CANDIDATES GRID --- */
 .candidates-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -78,6 +79,7 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 10px;
+  position: relative; /* nécessaire pour badge classement */
 }
 
 .candidate-card:hover {
@@ -98,6 +100,21 @@
   object-fit: cover;
 }
 
+/* Badge classement */
+.rank-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: gold;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Votes counter */
 .votes-counter {
   position: absolute;
   bottom: 8px;
@@ -125,6 +142,7 @@
   color: #555;
 }
 
+/* Vote button */
 .vote-button {
   background-color: #ff4b5c;
   color: #fff;
@@ -137,6 +155,20 @@
   transition: background-color 0.2s;
 }
 
-.vote-button:hover {
+/* Hover et état désactivé */
+.vote-button:hover:not(:disabled) {
   background-color: #e04352;
+}
+.vote-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Message si vote bloqué */
+.voting-closed-msg {
+  margin-top: 10px;
+  color: #c00;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.95rem;
 }
