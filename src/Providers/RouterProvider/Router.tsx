@@ -16,6 +16,7 @@ import Login from "../../Pages/Admin/Login/Login";
 import Dashboard from "../../Pages/Admin/Dashboard/Dashboard";
 import Profile from "../../Pages/Admin/Profile/Profile";
 import PublicConcour from "../../Pages/PublicConcour/PublicConcour";
+import PaymentSuccess from "../../Pages/PaymentSuccess/PaymentSuccess";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     {
         path: '/concours/:id/public',
         element: <PublicConcour/>,
+    },
+    {
+        path:"/payment-success", 
+        element: <PaymentSuccess />
     },
     {
         path: '/login',
