@@ -15,6 +15,7 @@ export default function Home() {
 
   const navigate = useNavigate();
 
+  // ... (useEffect et fetchConcours restent inchangés) ...
   useEffect(() => {
     const fetchConcours = async () => {
       try {
@@ -30,16 +31,7 @@ export default function Home() {
     fetchConcours();
   }, []);
 
-  const goToDetails = (id: number) => navigate(`/concours/${id}/public`);
-
-  // Convert status from DB into readable filters
-  const filteredConcours = concours.filter((c) => {
-    if (filter === "Tous") return true;
-    if (filter === "En cours") return c.status === "EN_COURS";
-    if (filter === "Terminé") return c.status === "TERMINE";
-    if (filter === "A venir") return c.status === "A_VENIR";
-    return true;
-  });
+  const goToDetails = (id: number) => navigate(`/concours/${id}/show`);
 
   if (isLoading) return <div className="loading">Chargement des concours...</div>;
   if (error) return <div className="error">{error}</div>;
@@ -63,35 +55,25 @@ export default function Home() {
       </div>
 
       <div className="concours-grid">
-        {filteredConcours.length === 0 ? (
-          <div className="empty">Aucun concours trouvé.</div>
-        ) : (
-          filteredConcours.map((concour) => (
-            <div
-              key={concour.id}
-              className="concour-card"
-              onClick={() => goToDetails(concour.id)}
-            >
-              <div className="image-container">
-                {concour.image ? (
-                  <img
-                    src={`http://127.0.0.1:8000/storage/${concour.image}`}
-                    alt={concour.name}
-                    className="concours-image"
-                  />
-                ) : (
-                  <div className="no-image">Aucune image</div>
-                )}
-
-                <span className={`status-badge ${concour.status?.toLowerCase()}`}>
-                  {concour.status?.replace("_", " ")}
-                </span>
-
-                <div className="concour-name">{concour.name}</div>
-              </div>
+        {concours.map((concour) => (
+          <div key={concour.id} className="concour-card" onClick={() => goToDetails(concour.id)}>
+            <div className="image-container">
+              {concour.image ? (
+                <img
+                  src={`http://127.0.0.1:8000/storage/${concour.image}`}
+                  alt={concour.name}
+                  className="concours-image"
+                />
+              ) : (
+                <div className="no-image">Aucune image</div>
+              )}
+              <span className={`status-badge ${concour.status?.toLowerCase()}`}>
+                {concour.status?.replace("_", " ")}
+              </span>
+              <div className="concour-name">{concour.name}</div>
             </div>
-          ))
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );
