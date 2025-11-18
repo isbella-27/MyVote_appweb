@@ -1,0 +1,161 @@
+/* ================================
+   WRAPPER GÉNÉRAL
+================================ */
+.admin-edit-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   TITRE + BOUTON RETOUR
+================================ */
+.back-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #444;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: #222;
+}
+
+.admin-edit-wrapper h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #222;
+}
+
+/* ================================
+   FORMULAIRE
+================================ */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input {
+  padding: 12px 14px;
+  border: 1px solid #cfd6dd;
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 15px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #4d8bff;
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(77, 139, 255, 0.15);
+}
+
+/* ================================
+   BOUTON DE VALIDATION
+================================ */
+.submit-btn {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #4d8bff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background: #3a74dd;
+}
+
+.submit-btn:active {
+  transform: scale(0.97);
+}
+
+.submit-btn:disabled {
+  background: #a9c4f6;
+  cursor: not-allowed;
+}
+
+/* ================================
+   MESSAGES D'ERREUR & SUCCÈS
+================================ */
+.error-box,
+.success-box {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error-box {
+  background: #ffe5e5;
+  border-left: 4px solid #ff4b4b;
+  color: #b30000;
+}
+
+.success-box {
+  background: #e8ffe8;
+  border-left: 4px solid #2ecc71;
+  color: #137a2f;
+}
+
+/* ================================
+   LOADING
+================================ */
+.loading {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 480px) {
+  .admin-edit-wrapper {
+    padding: 18px;
+    margin: 20px;
+  }
+
+  .admin-edit-wrapper h1 {
+    font-size: 20px;
+  }
+
+  .submit-btn {
+    font-size: 15px;
+  }
+}

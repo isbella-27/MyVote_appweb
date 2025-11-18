@@ -1,0 +1,85 @@
+/* --- CONTENEUR GLOBAL --- */
+.admin-details-wrapper {
+  padding: 25px;
+  max-width: 1100px;
+  margin: auto;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+/* --- HEADER --- */
+.admin-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.admin-details-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* --- MESSAGE EMPTY --- */
+.admin-empty-text {
+  text-align: center;
+  font-size: 18px;
+  padding: 25px;
+  color: #64748b;
+}
+
+/* --- TABLEAU --- */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.admin-table-head {
+  background: #1e293b;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.admin-table th {
+  padding: 15px 12px;
+  text-align: left;
+}
+
+.admin-table-row:nth-child(even) {
+  background: #f1f5f9;
+}
+
+.admin-table-row:hover {
+  background: #e2e8f0;
+  transition: 0.3s ease;
+}
+
+.admin-cell {
+  padding: 14px 12px;
+  font-size: 15px;
+  color: #334155;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .admin-details-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .admin-table th,
+  .admin-cell {
+    padding: 12px 8px;
+  }
+
+  .admin-details-title {
+    font-size: 22px;
+  }
+}

@@ -57,6 +57,7 @@ export default function Dashboard() {
           <>
             <Link to="/dashboard" className="menu-item active">Accueil</Link>
             <Link to="/concours">Concours & Candidats</Link>
+            <Link to="/admins">Administrateurs</Link>
             <Link to="/profile">Profil</Link>
             <a className="menu-item">Paramètres</a>
             <a className="menu-item logout" onClick={handleLogout}>
