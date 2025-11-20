@@ -18,10 +18,8 @@ export type Concour = {
     image?: string | null;
     start_at?: string;
     end_at?: string;
-    price_per_vote?: number;
+    price_per_vote: number;
     status?: 'EN_COURS' | 'TERMINE' | 'A_VENIR'
 
     candidates?: Candidate[];
 }
-
-

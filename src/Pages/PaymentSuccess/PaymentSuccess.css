@@ -1,0 +1,100 @@
+.payment-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  padding: 35px 45px;
+  font-family: "Poppins", sans-serif;
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.payment-header img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.payment-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.payment-success {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.payment-details {
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 20px 0;
+  margin-bottom: 25px;
+}
+
+.payment-details .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.payment-details .row span:first-child {
+  font-weight: 600;
+  color: #374151;
+}
+
+.payment-details .row span:last-child {
+  color: #111827;
+  text-align: right;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s;
+  border: none;
+}
+
+.download-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.download-btn:hover {
+  background-color: #2563eb;
+}
+
+.back-btn {
+  background-color: #6b7280;
+  color: white;
+}
+
+.back-btn:hover {
+  background-color: #4b5563;
+}
+
+.payment-footer {
+  text-align: center;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 25px;
+}

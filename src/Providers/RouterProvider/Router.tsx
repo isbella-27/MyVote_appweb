@@ -12,6 +12,11 @@ import Login from "../../Pages/Admin/Login/Login";
 import Dashboard from "../../Pages/Admin/Dashboard/Dashboard";
 import Profile from "../../Pages/Admin/Profile/Profile";
 import PublicConcour from "../../Pages/PublicConcour/PublicConcour";
+import PaymentSuccess from "../../Pages/PaymentSuccess/PaymentSuccess";
+import ListAdmins from "../../Pages/Crud/Admins/List/ListAdmins";
+import EditAdmins from "../../Pages/Crud/Admins/Edit/EditAdmins";
+import ShowAdmins from "../../Pages/Crud/Admins/Show/ShowAdmin";
+import CreateAdmin from "../../Pages/Crud/Admins/Create/CreateAdmin";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +26,10 @@ const router = createBrowserRouter([
     {
         path: '/concours/:id/public',
         element: <PublicConcour/>,
+    },
+    {
+        path:"/payment-success", 
+        element: <PaymentSuccess />
     },
     {
         path: '/login',
@@ -52,15 +61,7 @@ const router = createBrowserRouter([
             {
                 path: ":id/show",
                 element: <ConcoursShow/>
-            },
-            {
-                path: ":id/candidates",
-                element: <List />, 
-            },
-            {
-                path: ":id/candidates/create", 
-                element: <Create />,
-            },
+            }
         ]
     },
     {
@@ -85,7 +86,28 @@ const router = createBrowserRouter([
                 element: <CandidatesShow />,
             },
         ],
-    }
+    },
+    {
+        path: "/admins",
+        children: [
+            {
+                index: true,
+                element: <ListAdmins/>
+            },
+            {
+                path: "create",
+                element: <CreateAdmin/>
+            },
+            {
+                path: ":id/edit",
+                element: <EditAdmins/>
+            },
+            {
+                path: ":id/show",
+                element: <ShowAdmins/>
+            }
+        ]
+    },
 ])
 
 const Router = () => {

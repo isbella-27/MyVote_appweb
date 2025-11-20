@@ -13,9 +13,10 @@ export default function Home() {
   const [error, setError] = useState("");
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("Tous");
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const navigate = useNavigate();
 
-  // ... (useEffect et fetchConcours restent inchangés) ...
   useEffect(() => {
     const fetchConcours = async () => {
       try {
@@ -31,7 +32,21 @@ export default function Home() {
     fetchConcours();
   }, []);
 
-  const goToDetails = (id: number) => navigate(`/concours/${id}/show`);
+  const goToDetails = (id: number) => navigate(`/concours/${id}/public`);
+
+  const filteredConcours = concours.filter((c) => {
+    const matchesStatus =
+      filter === "Tous" ||
+      (filter === "En cours" && c.status === "EN_COURS") ||
+      (filter === "Terminé" && c.status === "TERMINE") ||
+      (filter === "A venir" && c.status === "A_VENIR");
+
+    const matchesSearch = c.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    return matchesStatus && matchesSearch;
+  });
 
   if (isLoading) return <div className="loading">Chargement des concours...</div>;
   if (error) return <div className="error">{error}</div>;
@@ -42,12 +57,24 @@ export default function Home() {
 
       <h1 className="page-title">Concours disponibles</h1>
 
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Rechercher un concours par nom..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
+
       <div className="filter-bar">
         {FILTERS.map((f) => (
           <button
             key={f}
             className={`filter-btn ${filter === f ? "active" : ""}`}
-            onClick={() => setFilter(f)}
+            onClick={() => {
+              setFilter(f);
+            }}
           >
             {f}
           </button>
@@ -55,25 +82,39 @@ export default function Home() {
       </div>
 
       <div className="concours-grid">
-        {concours.map((concour) => (
-          <div key={concour.id} className="concour-card" onClick={() => goToDetails(concour.id)}>
-            <div className="image-container">
-              {concour.image ? (
-                <img
-                  src={`http://127.0.0.1:8000/storage/${concour.image}`}
-                  alt={concour.name}
-                  className="concours-image"
-                />
-              ) : (
-                <div className="no-image">Aucune image</div>
-              )}
-              <span className={`status-badge ${concour.status?.toLowerCase()}`}>
-                {concour.status?.replace("_", " ")}
-              </span>
-              <div className="concour-name">{concour.name}</div>
-            </div>
+        {filteredConcours.length === 0 ? (
+          <div className="empty">
+            {searchTerm
+              ? `Aucun concours trouvé pour "${searchTerm}".`
+              : "Aucun concours trouvé."}
           </div>
-        ))}
+        ) : (
+          filteredConcours.map((concour) => (
+            <div
+              key={concour.id}
+              className="concour-card"
+              onClick={() => goToDetails(concour.id)}
+            >
+              <div className="image-container">
+                {concour.image ? (
+                  <img
+                    src={`http://127.0.0.1:8000/storage/${concour.image}`}
+                    alt={concour.name}
+                    className="concours-image"
+                  />
+                ) : (
+                  <div className="no-image">Aucune image</div>
+                )}
+
+                <span className={`status-badge ${concour.status?.toLowerCase()}`}>
+                  {concour.status?.replace("_", " ")}
+                </span>
+
+                <div className="concour-name">{concour.name}</div>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

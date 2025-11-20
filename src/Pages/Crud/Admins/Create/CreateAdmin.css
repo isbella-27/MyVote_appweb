@@ -1,0 +1,121 @@
+/* ====== GLOBAL WRAPPER ====== */
+.admin-create-wrapper {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease;
+}
+
+/* Animation légère d'apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== TITRE ====== */
+.admin-create-wrapper h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ====== BOUTON RETOUR ====== */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 15px;
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: #1e40af;
+}
+
+/* ====== FORM ====== */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* GROUPES DE CHAMPS */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* CHAMPS DE TEXTE */
+.form-group input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  transition: border 0.25s, box-shadow 0.25s;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* ====== BOUTON SUBMIT ====== */
+.submit-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+}
+
+.submit-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* ====== MESSAGE D’ERREUR ====== */
+.error-box {
+  background: #fee2e2;
+  border-left: 4px solid #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 480px) {
+  .admin-create-wrapper {
+    margin: 20px 10px;
+    padding: 20px;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+  }
+}
