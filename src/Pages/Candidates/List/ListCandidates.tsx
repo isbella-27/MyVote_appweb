@@ -12,10 +12,16 @@ export default function ListCandidates() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [candidates, setCandidates] = useState<Array<Candidate>>([]);
 
+  // Recherche
+  const [search, setSearch] = useState("");
+
+  // Tri
+  const [sortBy, setSortBy] = useState("votes_desc");
+
   const fetchCandidates = async () => {
     try {
       const data = await candidateApi.getAll();
-      // Filtrer par ID du concours
+
       const filtered = data.filter((c: Candidate) => c.concour_id === Number(id));
 
       setCandidates(filtered);
@@ -47,12 +53,75 @@ export default function ListCandidates() {
     if (id) fetchCandidates();
   }, [id]);
 
+  // Tri selon votes / nom / nationalité
+  const sortedCandidates = [...candidates]
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "votes_desc":
+          return (b.votes_count || 0) - (a.votes_count || 0);
+        case "votes_asc":
+          return (a.votes_count || 0) - (b.votes_count || 0);
+        case "name":
+          return a.last_name.localeCompare(b.last_name);
+        case "nationality":
+          return a.nationality.localeCompare(b.nationality);
+        default:
+          return 0;
+      }
+    })
+    .filter(
+      (c) =>
+        c.first_name.toLowerCase().includes(search.toLowerCase()) ||
+        c.last_name.toLowerCase().includes(search.toLowerCase()) ||
+        c.nationality.toLowerCase().includes(search.toLowerCase())
+    );
+
+  // Calculs globaux
+  const totalCandidates = candidates.length;
+  const totalVotes = candidates.reduce(
+    (sum, c) => sum + (c.votes_count || 0),
+    0
+  );
+
   return (
     <div className="list-container">
-      <h1 className="list-title">Candidats du concours N° {id}</h1>
+      <h1 className="list-title">
+        Candidats du concours N° {id}
+      </h1>
+
+      {/* STATISTIQUES GLOBAL */}
+      <div className="stats-box">
+        <p><strong>Total candidats :</strong> {totalCandidates}</p>
+        <p><strong>Total votes :</strong> {totalVotes}</p>
+      </div>
+
+      {/* RECHERCHE & TRI */}
+      <div className="tools-bar" style={{ marginBottom: "20px" }}>
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Rechercher un candidat..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <select
+          className="sort-select"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option value="votes_desc">Tri : + votes → - votes</option>
+          <option value="votes_asc">Tri : - votes → + votes</option>
+          <option value="name">Tri : Nom (A-Z)</option>
+          <option value="nationality">Tri : Nationalité (A-Z)</option>
+        </select>
+      </div>
 
       <div className="button-flex">
-        <Link to={`/candidates/create?concour_id=${id}`} className="create-link">
+        <Link
+          to={`/candidates/create?concour_id=${id}`}
+          className="create-link"
+        >
           Ajouter un candidat
         </Link>
 
@@ -67,27 +136,35 @@ export default function ListCandidates() {
         <table className="concours-table">
           <thead>
             <tr>
+              <th>Rang</th>
               <th>Nom(s)</th>
               <th>Prénom(s)</th>
               <th>Nationalité</th>
+              <th>Votes</th>
               <th>Photo</th>
               <th>Opérations</th>
             </tr>
           </thead>
 
           <tbody>
-            {candidates.length === 0 ? (
+            {sortedCandidates.length === 0 ? (
               <tr>
-                <td colSpan={5} className="no-data">
-                  Aucun candidat trouvé pour ce concours.
+                <td colSpan={7} className="no-data">
+                  Aucun candidat trouvé.
                 </td>
               </tr>
             ) : (
-              candidates.map((candidate) => (
+              sortedCandidates.map((candidate, index) => (
                 <tr key={candidate.id}>
+                  {/* RANG AUTOMATIQUE */}
+                  <td><strong>{index + 1}ᵉ</strong></td>
+
                   <td>{candidate.last_name}</td>
                   <td>{candidate.first_name}</td>
                   <td>{candidate.nationality}</td>
+
+                  {/* Votes */}
+                  <td><strong>{candidate.votes_count || 0}</strong></td>
 
                   <td>
                     <img
@@ -98,15 +175,24 @@ export default function ListCandidates() {
                   </td>
 
                   <td className="operation-button">
-                    <button onClick={() => handleShowCandidate(candidate.id)} className="action-button">
+                    <button
+                      onClick={() => handleShowCandidate(candidate.id)}
+                      className="action-button"
+                    >
                       Détails
                     </button>
 
-                    <button onClick={() => handleEditCandidate(candidate.id)} className="action-button">
+                    <button
+                      onClick={() => handleEditCandidate(candidate.id)}
+                      className="action-button"
+                    >
                       Modifier
                     </button>
 
-                    <button onClick={() => handleDestroyCandidate(candidate.id)} className="action-button">
+                    <button
+                      onClick={() => handleDestroyCandidate(candidate.id)}
+                      className="action-button"
+                    >
                       Supprimer
                     </button>
                   </td>

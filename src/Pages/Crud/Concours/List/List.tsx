@@ -52,6 +52,8 @@ export default function List() {
             <SideBar />
 
       <h1 className="list-title">Liste des concours</h1>
+      <p className="total-count">Total : {concours.length} concours</p>
+
       <div className="button-flex">
       <Link to="/concours/create" className="create-link">
         Crée un concour

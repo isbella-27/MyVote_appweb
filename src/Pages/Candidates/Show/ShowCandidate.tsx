@@ -35,6 +35,7 @@ export default function ShowCandidate() {
         />
 
         <h2>{candidate.last_name} {candidate.first_name}</h2>
+        <p><strong>Total des votes :</strong> {candidate.votes_count ?? 0}</p>
         <p><strong>Nationalité :</strong> {candidate.nationality}</p>
         <p><strong>Description :</strong> {candidate.full_description}</p>
       </div>

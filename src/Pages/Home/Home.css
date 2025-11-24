@@ -134,6 +134,43 @@
   color: #666;
 }
 
+/* --- Search & Sort --- */
+
+.top-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Share icon */
+.share-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #494848d7;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
 /* Media Queries pour tablettes et desktop */
 @media (min-width: 600px) {
   .concour-image {

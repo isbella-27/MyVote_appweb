@@ -1,6 +1,7 @@
 
 
 export type Candidate = {
+    concour: any;
     id: number;
     concour_id: number;
     last_name: string;
