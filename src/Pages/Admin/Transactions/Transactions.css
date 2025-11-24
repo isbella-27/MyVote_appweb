@@ -1,0 +1,202 @@
+/* === Conteneur global === */
+.transactions-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+}
+
+/* === Partie principale (table + actions) === */
+.transactions-main {
+  flex: 1;
+  margin-left: 280px; /* décalage si sidebar ouverte */
+  padding: 20px;
+}
+
+/* Responsive pour sidebar en dessous de 500px */
+@media (max-width: 500px) {
+  .transactions-main {
+    margin-left: 0;
+  }
+}
+
+/* === Titre === */
+.transactions-main h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* === Barre d'action === */
+.transactions-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+.transactions-actions button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.transactions-actions button:hover {
+  background-color: #3c38b5;
+}
+
+/* === Tableau === */
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.transactions-table th,
+.transactions-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.transactions-table th {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.transactions-table th.sortable:hover {
+  background-color: #e0e0ff;
+}
+
+.clickable-row:hover {
+  background-color: #f0f0ff;
+  cursor: pointer;
+}
+
+/* === Pagination === */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.pagination span {
+  font-weight: 500;
+}
+
+/* === Modal overlay === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* === Modal content === */
+.modal-content {
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #4f46e5;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+/* Boutons modal */
+.modal-content .close-button,
+.modal-content button {
+  margin-top: 15px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-content .close-button {
+  background-color: #d9534f;
+  color: white;
+  margin-left: 10px;
+}
+
+.modal-content .close-button:hover {
+  background-color: #c9302c;
+}
+
+.modal-content button {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.modal-content button:hover {
+  background-color: #3c38b5;
+}
+
+/* === Responsive tableau === */
+@media (max-width: 900px) {
+  .transactions-table th, .transactions-table td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .transactions-table th, .transactions-table td {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .transactions-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -64,7 +64,6 @@ export default function VoteModal({ candidate, concour, onClose, onSuccess }: Vo
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        
         <button className="close-btn" onClick={onClose}>×</button>
 
         <h2>Voter pour {candidate.first_name} {candidate.last_name}</h2>
@@ -73,13 +72,33 @@ export default function VoteModal({ candidate, concour, onClose, onSuccess }: Vo
         </p>
 
         <label className="label">Nombre de votes</label>
-        <input
-          className="input"
-          type="number"
-          min={1}
-          value={votesRequested}
-          onChange={(e) => setVotesRequested(Number(e.target.value))}
-        />
+        <div className="vote-counter">
+          <button
+            className="counter-btn"
+            onClick={() => setVotesRequested((v) => Math.max(1, v - 1))}
+          >
+            –
+          </button>
+
+          <input
+            className="input vote-input"
+            type="number"
+            min={1}
+            value={votesRequested}
+            onChange={(e) => setVotesRequested(Math.max(1, Number(e.target.value)))}
+          />
+
+          <button
+            className="counter-btn"
+            onClick={() => setVotesRequested((v) => v + 1)}
+          >
+            +
+          </button>
+        </div>
+
+        <p className="total-amount">
+          Montant total : <strong>{votesRequested * concour.price_per_vote} FCFA</strong>
+        </p>
 
         <label className="label">Moyen de paiement</label>
         <select

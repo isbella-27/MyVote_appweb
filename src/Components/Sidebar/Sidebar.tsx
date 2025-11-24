@@ -45,14 +45,15 @@ export default function Dashboard() {
 
                 <nav className="sidebar-menu">          
 
-                    {/* Visible seulement si NON connecté */}
-                    {!isAuthenticated && (
-                        <>
-                            <Link to="/" className="menu-item active">Home</Link>
-                            <Link to="/">Résultats des concours</Link>
-                            <Link to="/login">Se connecter</Link>
-                        </>
-                    )}
+        <nav className="sidebar-menu">          
+
+          {/* Visible seulement si NON connecté */}
+          {!isAuthenticated && (
+            <>
+              <Link to="/" className="menu-item active">Home</Link>
+              <Link to="/login">Se connecter</Link>
+            </>
+          )}
 
           {/* Visible seulement si connecté */}
           {isAuthenticated && (
@@ -61,7 +62,7 @@ export default function Dashboard() {
             <Link to="/concours">Concours & Candidats</Link>
             <Link to="/admins">Administrateurs</Link>
             <Link to="/profile">Profil</Link>
-            <a className="menu-item">Paramètres</a>
+            <Link to="/transactions">Transactions</Link>
             <a className="menu-item logout" onClick={handleLogout}>
               Déconnexion
             </a>

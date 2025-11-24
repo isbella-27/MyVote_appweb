@@ -16,7 +16,7 @@ import Dashboard from "../../Pages/Admin/Dashboard/Dashboard";
 import Profile from "../../Pages/Admin/Profile/Profile";
 import PublicConcour from "../../Pages/PublicConcour/PublicConcour";
 import PaymentSuccess from "../../Pages/PaymentSuccess/PaymentSuccess";
-import EditAdmins from "../../Pages/Crud/Admins/Edit/EditAdmins";
+import Transactions from "../../Pages/Admin/Transactions/Transactions";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
     {
         path:"/payment-success", 
         element: <PaymentSuccess />
+    },
+    {
+        path:"/transactions", 
+        element: <Transactions />
     },
     {
         path: '/login',

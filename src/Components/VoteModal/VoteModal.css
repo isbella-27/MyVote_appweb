@@ -128,3 +128,38 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.vote-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.vote-input {
+  width: 80px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.counter-btn {
+  width: 40px;
+  height: 40px;
+  background: #1e79f9;
+  border: none;
+  border-radius: 8px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.counter-btn:hover {
+  background: #03c409;
+}
+
+.total-amount {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
