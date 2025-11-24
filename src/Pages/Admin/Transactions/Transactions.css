@@ -10,7 +10,6 @@
 /* === Partie principale (table + actions) === */
 .transactions-main {
   flex: 1;
-  margin-left: 280px; /* décalage si sidebar ouverte */
   padding: 20px;
 }
 
