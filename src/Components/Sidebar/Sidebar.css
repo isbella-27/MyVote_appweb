@@ -26,35 +26,47 @@
     background: #3c38b5;
 }
 
-/* === Sidebar === */
+/* ---------------------------------------------------------------------- */
+
+/* === Sidebar : État de base (Masqué) === */
 .sidebar {
     background: #1e1e2f;
     color: white;
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: fixed; /* Conserve la position fixe pour qu'elle flotte sur mobile */
     height: 100%;
-    width: 260px;
+    
+    width: 0; 
+    
     top: 0;
     left: 0;
-    transition: 0.35s ease-in-out;
+    transition: width 0.35s ease-in-out, padding 0.35s ease-in-out; 
     z-index: 1000;
     overflow-y: auto;
+    visibility: hidden; 
+    white-space: nowrap; 
 }
 
-/* Sidebar fermée */
+/* Sidebar ouverte (.sidebar.open) */
+.sidebar.open {
+    width: 260px;
+    padding: 30px 20px; 
+    visibility: visible; 
+}
+
+/* Sidebar fermée (.sidebar.closed) */
 .sidebar.closed {
     width: 0;
     padding: 25px 0;
     overflow: hidden;
+    visibility: hidden;
 }
 
-/* Sidebar ouverte */
-.sidebar.open {
-    width: 260px;
-}
+/* ---------------------------------------------------------------------- */
 
+/* === Composants de la Sidebar === */
 .header-form {
     display: flex;
     gap: 10px;
@@ -75,7 +87,7 @@
     gap: 15px;
 }
 
-/* --- Style de base pour les éléments de menu (y compris les <a> générés par Link) --- */
+/* --- Styles des éléments de menu (aucun changement) --- */
 .menu-item, 
 .sidebar-menu a:not(.menu-item a) {
     display: block;
@@ -84,8 +96,8 @@
     font-size: 0.95rem;
     transition: 0.3s;
     white-space: nowrap;
-    text-decoration: none; /* Pour les liens <Link> */
-    color: white; /* Pour les liens <Link> */
+    text-decoration: none; 
+    color: white; 
     cursor: pointer;
 }
 
@@ -116,18 +128,22 @@
     background: #c9302c;
 }
 
-/* === Contenu principal === */
+/* ---------------------------------------------------------------------- */
+
+/* === Contenu principal : État de base (NON décalé) === */
 .main-content {
     margin-top: 20px;
     padding: 40px 30px;
-    width: 100%;
-    margin-left: 0;
-    transition: 0.35s ease-in-out;
+    /* La largeur initiale est 100%, ce qui est correct par défaut */
+    width: 100%; 
+    margin-left: 0; 
+    transition: margin-left 0.35s ease-in-out, width 0.35s ease-in-out; /* Ajout de width dans la transition */
 }
 
-/* Si sidebar ouverte = on décale */
+/* Si sidebar ouverte = on décale le contenu (.main-content.shift) */
+/* REMARQUE: Sur desktop, cette règle sera écrasée par la media query pour ajuster la width */
 .main-content.shift {
-    margin-left: 260px;
+    margin-left: 260px; 
 }
 
 .main-content h1 {
@@ -161,13 +177,26 @@
     transform: translateY(-4px);
 }
 
+/* ---------------------------------------------------------------------- */
+
 /* === Responsive === */
 
-/* Décalage du bouton uniquement sur grand écran */
+/* Décalage du bouton uniquement sur grand écran (>= 701px) */
 @media (min-width: 701px) {
+    /* Le bouton suit la sidebar ouverte */
     .sidebar.open ~ .toggle-btn {
         left: calc(260px + 18px); 
         background: #3c38b5;
+    }
+    
+    /* 💡 CORRECTION POUR LE "PUSH" : 
+     * Lorsque la sidebar est ouverte ET sur un grand écran, 
+     * nous réduisons la largeur du contenu principal pour qu'il ne passe pas sous la sidebar. 
+     */
+    .main-content.shift {
+        margin-left: 260px;
+        /* La largeur totale est 100% - la largeur de la sidebar */
+        width: calc(100% - 260px); 
     }
 }
 
@@ -176,10 +205,12 @@
         grid-template-columns: 1fr 1fr;
     }
     
-    /* Sur petit écran, on ne décale jamais le contenu */
+    /* Sur petit écran (mobile), la sidebar DOIT se superposer (overlay) */
+    /* On annule donc tout décalage et toute modification de largeur */
     .main-content, 
     .main-content.shift {
         margin-left: 0 !important; 
+        width: 100% !important; /* Ajout pour annuler l'effet calc() ci-dessus */
     }
     
     /* Le bouton reste à gauche sur mobile */
@@ -189,9 +220,8 @@
 }
 
 @media (max-width: 700px) {
-    /* Sur mobile/tablette, la sidebar doit se superposer, pas décaler. */
     .main-content {
-        padding-top: 70px; /* Plus d'espace pour le bouton fixe */
+        padding-top: 70px; 
     }
 }
 

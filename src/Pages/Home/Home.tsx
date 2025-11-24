@@ -13,6 +13,8 @@ export default function Home() {
   const [error, setError] = useState("");
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("Tous");
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,13 +34,18 @@ export default function Home() {
 
   const goToDetails = (id: number) => navigate(`/concours/${id}/public`);
 
-  // Convert status from DB into readable filters
   const filteredConcours = concours.filter((c) => {
-    if (filter === "Tous") return true;
-    if (filter === "En cours") return c.status === "EN_COURS";
-    if (filter === "Terminé") return c.status === "TERMINE";
-    if (filter === "A venir") return c.status === "A_VENIR";
-    return true;
+    const matchesStatus =
+      filter === "Tous" ||
+      (filter === "En cours" && c.status === "EN_COURS") ||
+      (filter === "Terminé" && c.status === "TERMINE") ||
+      (filter === "A venir" && c.status === "A_VENIR");
+
+    const matchesSearch = c.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    return matchesStatus && matchesSearch;
   });
 
   if (isLoading) return <div className="loading">Chargement des concours...</div>;
@@ -50,12 +57,24 @@ export default function Home() {
 
       <h1 className="page-title">Concours disponibles</h1>
 
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Rechercher un concours par nom..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
+
       <div className="filter-bar">
         {FILTERS.map((f) => (
           <button
             key={f}
             className={`filter-btn ${filter === f ? "active" : ""}`}
-            onClick={() => setFilter(f)}
+            onClick={() => {
+              setFilter(f);
+            }}
           >
             {f}
           </button>
@@ -64,7 +83,11 @@ export default function Home() {
 
       <div className="concours-grid">
         {filteredConcours.length === 0 ? (
-          <div className="empty">Aucun concours trouvé.</div>
+          <div className="empty">
+            {searchTerm
+              ? `Aucun concours trouvé pour "${searchTerm}".`
+              : "Aucun concours trouvé."}
+          </div>
         ) : (
           filteredConcours.map((concour) => (
             <div

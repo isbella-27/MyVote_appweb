@@ -1,24 +1,39 @@
+
+
 .public-concour-container {
-  padding: 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-  font-family: 'Poppins', sans-serif;
+    padding: 30px 20px;
+    max-width: 1200px; 
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f8f8f8; /* Fond légèrement plus clair */
+    min-height: 100vh;
 }
 
 .back-button {
-  background: none;
-  border: none;
-  color: #ff4b5c;
-  font-size: 1rem;
-  margin-bottom: 15px;
-  cursor: pointer;
+    background: none;
+    border: none;
+    color: #ff4b5c; /* Couleur principale (Rouge vif) */
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #e04352;
 }
 
 .concour-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Ombre plus douce */
+    padding: 20px;
+    margin-bottom: 40px;
 }
 
 .concour-image-wrapper {
@@ -37,35 +52,59 @@
 }
 
 .concour-info {
-  text-align: center;
-  margin-top: 15px;
+    text-align: center;
+    padding: 20px 0 0;
 }
 
 .concour-info h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .concour-info p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .concour-stats {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: #333;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.concour-stats span {
+    padding: 8px 15px;
+    background-color: #fff0f1; 
+    border: 1px solid #ffb3b8;
+    border-radius: 8px;
+}
+
+
+h2 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-left: 5px solid #ff4b5c;
+    padding-left: 10px;
 }
 
 /* --- CANDIDATES GRID --- */
 .candidates-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    gap: 30px;
+    padding: 10px 0;
 }
 
 .candidate-card {
@@ -83,21 +122,26 @@
 }
 
 .candidate-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
 .candidate-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 250px; 
+    overflow: hidden;
 }
 
 .candidate-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.candidate-card:hover .candidate-photo {
+    transform: scale(1.05); 
 }
 
 /* Badge classement */
@@ -128,31 +172,37 @@
 }
 
 .candidate-info {
-  text-align: center;
-  padding: 10px 5px;
+    text-align: center;
+    padding: 15px 10px 10px;
+    flex-grow: 1; 
 }
 
 .candidate-info h3 {
-  margin: 5px 0;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
 }
 
 .candidate-info p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #555;
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
 }
 
 /* Vote button */
 .vote-button {
-  background-color: #ff4b5c;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  margin-top: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s;
+    background-color: #ff4b5c;
+    color: #fff;
+    border: none;
+    padding: 12px 0; 
+    border-radius: 0 0 12px 12px; 
+    width: 100%; 
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Hover et état désactivé */

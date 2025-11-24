@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { adminApi } from "../../../../api/admins/crud_admins";
 import React from "react";
 
 import "./EditAdmins.css";
+import { adminApi } from "../../../../api/admins/crud_admins";
 
 export default function EditAdmins() {
   const { id } = useParams();

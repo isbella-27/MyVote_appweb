@@ -6,51 +6,53 @@ import logo from '../../assets/logo.png';
 
 
 export default function Dashboard() {
-  const [isOpen, setIsOpen] = useState(true);
-  const navigate = useNavigate();
-  const isAuthenticated = !!localStorage.getItem("token");
+    // 💡 CORRECTION APPORTÉE ICI : La sidebar est fermée au départ
+    const [isOpen, setIsOpen] = useState(false); 
+    
+    const navigate = useNavigate();
+    const isAuthenticated = !!localStorage.getItem("token");
 
 
-  const handleLogout = () => {
-    logout();               
-    navigate("/");          
-  };
+    const handleLogout = () => {
+        logout();              
+        navigate("/");           
+    };
 
-  return (
-    <>
+    return (
+        <>
+            {/* Bouton hamburger (mobile + desktop) */}
+            <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? "✖" : "☰"}
+            </button>
 
-      {/* Bouton hamburger (mobile + desktop) */}
-      <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? "✖" : "☰"}
-      </button>
+            {/* --- Sidebar --- */}
+            {/* L'état initial 'false' appliquera la classe "closed" */}
+            <aside className={`sidebar ${isOpen ? "open" : "closed"}`}> 
+                {!isAuthenticated && (
+                    <div className='header-form'>
+                    <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
+                    <h2 className="sidebar-title">Votify</h2>
+                    </div>
+                )}
 
-      {/* --- Sidebar --- */}
-      <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
-        {!isAuthenticated && (
-          <div className='header-form'>
-          <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
-          <h2 className="sidebar-title">Votify</h2>
-          </div>
-        )}
+                {isAuthenticated && (
+                    <div className='header-form'>
+                    <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
+                    <h2 className="sidebar-title">Dashboard</h2>
+                    </div>
+                )}
+                
 
-        {isAuthenticated && (
-          <div className='header-form'>
-          <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
-          <h2 className="sidebar-title">Dashboard</h2>
-          </div>
-        )}
-       
+                <nav className="sidebar-menu">          
 
-        <nav className="sidebar-menu">          
-
-          {/* Visible seulement si NON connecté */}
-          {!isAuthenticated && (
-            <>
-              <Link to="/" className="menu-item active">Home</Link>
-              <Link to="/">Résultats des concours</Link>
-              <Link to="/login">Se connecter</Link>
-            </>
-          )}
+                    {/* Visible seulement si NON connecté */}
+                    {!isAuthenticated && (
+                        <>
+                            <Link to="/" className="menu-item active">Home</Link>
+                            <Link to="/">Résultats des concours</Link>
+                            <Link to="/login">Se connecter</Link>
+                        </>
+                    )}
 
           {/* Visible seulement si connecté */}
           {isAuthenticated && (
