@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { adminApi } from "../../../../api/admins/crud_admins";
 import React from "react";
 import "./CreateAdmin.css";
-import { adminApi } from "../../../../api/admins/crud_admins";
 
 export default function CreateAdmin() {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import SideBar from "../../../../Components/Sidebar/Sidebar";
 import { useEffect, useState } from "react";
+import { adminApi } from "../../../../api/admins/crud_admins";
 import Loader from "../../../../Components/Loader/Loader";
 import "./ShowAdmin.css";
 import { Link, useParams } from "react-router";
 import type { User } from "../../../../data/models/user.model";
-import { adminApi } from "../../../../api/admins/crud_admins";
 
 export default function ShowAdmins() {
   // --- CORRIGÉ : L'état est soit un objet User soit null.

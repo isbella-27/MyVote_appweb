@@ -37,20 +37,18 @@
 }
 
 .concour-image-wrapper {
-    width: 100%;
-    max-width: 900px; 
-    height: 350px; /* Hauteur fixée */
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .concour-banner {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 🔑 Recadre pour couvrir le conteneur */
-    object-position: center; /* 🔑 Positionne le centre de l'image au centre du conteneur */
-    transition: transform 0.4s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .concour-info {
@@ -101,6 +99,7 @@ h2 {
     padding-left: 10px;
 }
 
+/* --- CANDIDATES GRID --- */
 .candidates-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
@@ -109,16 +108,17 @@ h2 {
 }
 
 .candidate-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  position: relative; /* nécessaire pour badge classement */
 }
 
 .candidate-card:hover {
@@ -144,17 +144,31 @@ h2 {
     transform: scale(1.05); 
 }
 
+/* Badge classement */
+.rank-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: gold;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Votes counter */
 .votes-counter {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff4b5c; 
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(255,75,92,0.85);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .candidate-info {
@@ -176,6 +190,7 @@ h2 {
     color: #777;
 }
 
+/* Vote button */
 .vote-button {
     background-color: #ff4b5c;
     color: #fff;
@@ -190,34 +205,20 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-.vote-button:hover {
-    background-color: #e04352;
+/* Hover et état désactivé */
+.vote-button:hover:not(:disabled) {
+  background-color: #e04352;
+}
+.vote-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
 }
 
-
-@media (max-width: 768px) {
-    .public-concour-container {
-        padding: 20px 10px;
-    }
-
-    .concour-header {
-        padding: 15px;
-    }
-
-    .concour-image-wrapper {
-        height: 250px;
-    }
-
-    .concour-info h1 {
-        font-size: 2rem;
-    }
-
-    .candidates-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 20px;
-    }
-    
-    .candidate-image-wrapper {
-        height: 200px;
-    }
+/* Message si vote bloqué */
+.voting-closed-msg {
+  margin-top: 10px;
+  color: #c00;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.95rem;
 }

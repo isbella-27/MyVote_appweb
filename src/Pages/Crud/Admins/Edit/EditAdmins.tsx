@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import React from "react";
 
-import "./EditAdmin.css";
+import "./EditAdmins.css";
 import { adminApi } from "../../../../api/admins/crud_admins";
 
 export default function EditAdmins() {

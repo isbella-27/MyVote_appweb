@@ -54,19 +54,20 @@ export default function Dashboard() {
                         </>
                     )}
 
-                    {/* Visible seulement si connecté */}
-                    {isAuthenticated && (
-                    <>
-                        <Link to="/dashboard" className="menu-item active">Accueil</Link>
-                        <Link to="/concours">Concours & Candidats</Link>
-                        <Link to="/profile">Profil</Link>
-                        <a className="menu-item">Paramètres</a>
-                        <a className="menu-item logout" onClick={handleLogout}>
-                            Déconnexion
-                        </a>
-                    </> )} 
-                </nav>
-            </aside>
-        </>
-    );
+          {/* Visible seulement si connecté */}
+          {isAuthenticated && (
+          <>
+            <Link to="/dashboard" className="menu-item active">Accueil</Link>
+            <Link to="/concours">Concours & Candidats</Link>
+            <Link to="/admins">Administrateurs</Link>
+            <Link to="/profile">Profil</Link>
+            <a className="menu-item">Paramètres</a>
+            <a className="menu-item logout" onClick={handleLogout}>
+              Déconnexion
+            </a>
+          </> )} 
+        </nav>
+      </aside>
+    </>
+  );
 }

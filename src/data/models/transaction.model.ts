@@ -1,6 +1,10 @@
 
 
 export type Transaction = {
+  concour_name: string;
+  candidate_name: string;
+  result: any;
+  message: string;
   id: number;
   tx_ref: string;
   concour_id: number;

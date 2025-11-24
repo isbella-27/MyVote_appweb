@@ -1,10 +1,10 @@
 import SideBar from "../../../../Components/Sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { adminApi } from "../../../../api/admins/crud_admins";
 import type { User } from "../../../../data/models/user.model";
 import Loader from "../../../../Components/Loader/Loader";
 import "./ListAdmins.css"; 
-import { adminApi } from "../../../../api/admins/crud_admins";
 
 export default function ListAdmins() {
   const [admins, setAdmins] = useState<User[]>([]);
