@@ -1,9 +1,9 @@
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router"; // Modification: Utiliser "react-router-dom"
 import { useEffect, useState } from "react";
-import "../../Crud/Concours/List/List.css";
 import type { Candidate } from "../../../data/models/candidate.model";
 import { candidateApi } from "../../../api/candidates/crud_candidates";
 import Loader from "../../../Components/Loader/Loader";
+import './List.css'
 
 export default function ListCandidates() {
   const { id } = useParams();
@@ -11,6 +11,7 @@ export default function ListCandidates() {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [candidates, setCandidates] = useState<Array<Candidate>>([]);
+  const BASE_URL = "http://127.0.0.1:8000"; // URL de base du backend Laravel
 
   // Recherche
   const [search, setSearch] = useState("");
@@ -26,18 +27,21 @@ export default function ListCandidates() {
 
       setCandidates(filtered);
     } catch (error) {
-      console.log("Erreur :", error);
+      console.error("Erreur de récupération des candidats :", error);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleDestroyCandidate = async (candidateId: number) => {
-    try {
-      await candidateApi.destroy(candidateId);
-      fetchCandidates();
-    } catch (error) {
-      console.log(error);
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce candidat ?")) {
+      try {
+        await candidateApi.destroy(candidateId);
+        fetchCandidates();
+      } catch (error) {
+        console.error("Erreur lors de la suppression :", error);
+        alert("Erreur lors de la suppression du candidat.");
+      }
     }
   };
 
@@ -124,14 +128,18 @@ export default function ListCandidates() {
         >
           Ajouter un candidat
         </Link>
-
-        <Link to="/concours" className="create-link">
+        {/* Utilisation de .back-link pour la cohérence du style CSS */}
+        <Link to="/concours" className="back-link">
           Retour aux concours
         </Link>
       </div>
 
       {isLoading ? (
         <Loader />
+      ) : candidates.length === 0 ? (
+        <div className="no-data-message">
+          Aucun candidat trouvé pour ce concours.
+        </div>
       ) : (
         <table className="concours-table">
           <thead>
@@ -193,14 +201,68 @@ export default function ListCandidates() {
                       onClick={() => handleDestroyCandidate(candidate.id)}
                       className="action-button"
                     >
+        <div className="candidates-grid">
+          {candidates.map((candidate) => {
+
+            const photoPath = candidate.profile_photo || "";
+            let imageUrl: string;
+
+            if (photoPath.startsWith('http')) {
+              // 1. L'image est déjà une URL complète (ex: CDN)
+              imageUrl = photoPath;
+            } else if (photoPath.includes('storage/')) {
+              // 2. Le chemin stocké en base contient déjà 'storage/' (ex: '/storage/profiles/...')
+              // On nettoie le slash initial (s'il existe) et on ajoute la BASE_URL.
+              const cleanPath = photoPath.startsWith('/') ? photoPath.substring(1) : photoPath;
+              imageUrl = `${BASE_URL}/${cleanPath}`;
+            } else {
+              // 3. Le chemin est relatif à 'storage/app/public' (ex: 'profiles/...')
+              // On ajoute le '/storage/' manquant.
+              const cleanPath = photoPath.startsWith('/') ? photoPath.substring(1) : photoPath;
+              imageUrl = `${BASE_URL}/storage/${cleanPath}`;
+            }
+
+            return (
+              <div key={candidate.id} className="candidate-card">
+                
+                {/* Conteneur de la photo */}
+                <div
+                  className="profile-photo-container"
+                  onClick={() => handleShowCandidate(candidate.id)}
+                >
+                  <img
+                    src={imageUrl} // Utilisation du chemin corrigé et vérifié
+                    alt={`${candidate.first_name} ${candidate.last_name}`}
+                    // Si l'image ne charge pas, on peut utiliser un fallback
+                    onError={(e) => {
+                        e.currentTarget.onerror = null; 
+                        e.currentTarget.src = "/placeholder_default.png"; // Remplacer par un chemin d'image par défaut local
+                    }}
+                    className="profile-photo"
+                  />
+                </div>
+
+                {/* Détails de la carte */}
+                <div className="card-details">
+                  <h3 className="candidate-name">{candidate.last_name} {candidate.first_name}</h3>
+                  <p className="candidate-description">
+                    {candidate.nationality}
+                  </p>
+
+                  {/* Actions (Boutons Modifier/Supprimer/Détails) */}
+                  <div className="card-actions">
+                    <button onClick={() => handleEditCandidate(candidate.id)} className="action-button edit-button">
+                      Modifier
+                    </button>
+                    <button onClick={() => handleDestroyCandidate(candidate.id)} className="action-button delete-button">
                       Supprimer
                     </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       )}
     </div>
   );

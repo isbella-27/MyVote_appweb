@@ -1,167 +1,296 @@
+/* --- VARIABLES ET FOND DE PAGE --- */
+:root {
+    --primary-blue: #007bff; /* Bleu vif pour l'accent */
+    --primary-hover: #0069d9;
+    --bg-page: #f4f7f9; /* Arrière-plan léger */
+    --text-dark: #343a40;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    /* Couleurs des boutons d'action */
+    --view-cyan: #17a2b8;   /* Teal/Cyan pour Voir */
+    --edit-yellow: #ffc107; /* Jaune pour Modifier */
+    --delete-red: #dc3545;  /* Rouge pour Supprimer */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+}
+
 .list-container {
-  padding: 40px;
-  background: #f8f9fa;
-  font-family: "Poppins", sans-serif;
-  min-height: 100vh;
+    padding: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
+/* --- TITRE ET BOUTONS DE CONTRÔLE --- */
 .list-title {
-  font-size: 1.8rem;
-  color: #222;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.create-link {
-  display: inline-block;
-  background: #007bff;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-  margin-bottom: 20px;
-}
-
-.create-link:hover {
-  background: #005ecb;
-}
-
-.concours-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.concours-table th,
-.concours-table td {
-  padding: 14px 16px;
-  text-align: left;
-}
-
-.concours-table thead {
-  background: #007bff;
-  color: white;
-  font-size: 0.95rem;
-}
-
-.concours-table tbody tr {
-  border-bottom: 1px solid #f0f0f0;
-  transition: background 0.2s;
-}
-
-.concours-table tbody tr:hover {
-  background: #f9fbff;
-}
-
-.concours-table td {
-  vertical-align: middle;
-  font-size: 0.92rem;
-  color: #333;
-}
-
-.concour-image {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #eee;
-}
-
-.action-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-right: 10px;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 8px;
-  background: #f0f0f0;
-  color: #333;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-}
-
-.action-button svg {
-  width: 18px;
-  height: 18px;
-}
-
-.action-button:hover {
-  background: #007bff;
-  color: white;
-}
-
-.no-data {
-  text-align: center;
-  padding: 30px 0;
-  font-style: italic;
-  color: #888;
-}
-
-.loading {
-  text-align: center;
-  font-weight: 500;
-  color: #555;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    padding-bottom: 8px;
+    /* Ligne d'accent bleue comme sur la maquette */
+    border-bottom: 4px solid var(--primary-blue); 
+    display: inline-block;
 }
 
 .button-flex {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
 }
 
-/* Responsive */
-@media screen and (max-width: 875px) {
-  .concours-table {
-    border: 0;
-    box-shadow: none;
-  }
-
-  .concours-table thead {
-    display: none;
-  }
-
-  .concours-table tr {
-    display: block;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-  }
-
-  .concours-table td {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 16px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .concours-table td:last-child {
-    border-bottom: none;
-  }
-
-  .concours-table td::before {
-    content: attr(data-label);
+.create-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
     font-weight: 600;
-    color: #007bff;
-  }
-
-  .action-button {
-    margin: 4px 0;
-  }
+    transition: all 0.3s ease;
+    background: var(--primary-blue);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
+.create-link:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
 
-@media screen and (max-width: 550px) {
-  .operation-button {
+/* Style du bouton "Retour" */
+.button-flex .create-link:last-child {
+    background: #e9ecef;
+    color: var(--text-dark);
+    box-shadow: none;
+}
+
+.button-flex .create-link:last-child:hover {
+    background: #ced4da;
+    transform: none;
+}
+
+/* --- STYLE DU TABLEAU --- */
+.concours-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden; /* Important pour les coins arrondis */
+    box-shadow: var(--shadow);
+}
+
+.concours-table thead tr {
+    background-color: var(--primary-blue);
+    color: white;
+    font-size: 0.95rem;
+}
+
+.concours-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Arrondir les coins du thead */
+.concours-table th:first-child { border-top-left-radius: 12px; }
+.concours-table th:last-child { border-top-right-radius: 12px; }
+
+
+.concours-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    vertical-align: middle;
+}
+
+.concours-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.concours-table tbody tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.2s;
+}
+
+/* Colonne Image */
+.concour-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Message d'absence de données */
+.no-data {
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* --- BOUTONS D'OPÉRATIONS --- */
+.operation-button {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    min-width: 90px;
+}
+
+.action-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+}
+
+/* Couleurs spécifiques des Boutons d'Action */
+.action-button:nth-child(1) { /* Voir */
+    color: var(--view-cyan); 
+    border-color: var(--view-cyan);
+}
+.action-button:nth-child(2) { /* Modifier */
+    color: var(--edit-yellow);
+    border-color: var(--edit-yellow);
+}
+.action-button:nth-child(3) { /* Supprimer */
+    color: var(--delete-red);
+    border-color: var(--delete-red);
+}
+
+.action-button:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+
+/* Gère la modal/message box à la place de confirm() */
+/* Si vous utilisez un vrai modal, ajustez ces styles */
+.action-button:nth-child(3):hover {
+    background-color: var(--delete-red);
+    color: white;
+}
+
+/* --- RESPONSIVITÉ (Transforme le tableau en liste/cartes sur mobile) --- */
+@media screen and (max-width: 900px) {
+    .list-container {
+        padding: 20px 15px;
+    }
+    .list-title {
+        font-size: 2rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .button-flex {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .concours-table thead {
+        /* Cache l'en-tête du tableau sur mobile */
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .concours-table {
+        /* Enlève le style de tableau pour une structure de carte */
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .concours-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .concours-table tr {
+        display: block;
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: var(--shadow);
+    }
+    
+    .concours-table td {
+        display: block;
+        text-align: right;
+        padding: 10px 0;
+        border-bottom: 1px dotted var(--border-color);
+    }
+
+    .concours-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* Affiche l'étiquette (data-label) avant la valeur */
+    .concours-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+        color: var(--text-muted);
+    }
+
+    /* Ajustement spécifique pour l'image et les opérations */
+    td[data-label="Photo"] {
+        text-align: center;
+    }
+    td[data-label="Photo"]::before {
+        content: "Image";
+        float: left;
+        font-weight: 600;
+        color: var(--text-muted);
+    }
+
+    td[data-label="Opérations"] {
+        text-align: center;
+    }
+    td[data-label="Opérations"]::before {
+        content: "Opérations";
+        float: none;
+        display: block;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .operation-button {
+        justify-content: space-between;
+        gap: 5px;
+    }
+    .action-button {
+        flex: 1 1 auto;
+        font-size: 0.75rem;
+    }
 }

@@ -13,4 +13,3 @@ export const voteApi = {
     return res.data;
   }
 };
-

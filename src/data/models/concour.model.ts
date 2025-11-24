@@ -23,5 +23,3 @@ export type Concour = {
 
     candidates?: Candidate[];
 }
-
-

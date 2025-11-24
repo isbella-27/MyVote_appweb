@@ -16,6 +16,8 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("none");
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -129,7 +131,9 @@ export default function Home() {
           <button
             key={f}
             className={`filter-btn ${filter === f ? "active" : ""}`}
-            onClick={() => setFilter(f)}
+            onClick={() => {
+              setFilter(f);
+            }}
           >
             {f}
           </button>

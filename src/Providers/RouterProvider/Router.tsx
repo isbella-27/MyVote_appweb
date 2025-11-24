@@ -7,7 +7,6 @@ import CandidatesShow from "../../Pages/Candidates/Show/ShowCandidate";
 import AdminsCreate from "../../Pages/Crud/Admins/Create/CreateAdmin";
 import AdminsList from "../../Pages/Crud/Admins/List/ListAdmins";
 import AdminsShow from "../../Pages/Crud/Admins/Show/ShowAdmin";
-import AdminsEdit from "../../Pages/Crud/Admins/Edit/EditAdmin";
 import ConcoursCreate from "../../Pages/Crud/Concours/Create/Create";
 import ConcoursList from "../../Pages/Crud/Concours/List/List";
 import ConcoursShow from "../../Pages/Crud/Concours/Show/Show";
@@ -105,12 +104,12 @@ const router = createBrowserRouter([
             },
             {
                 path: ":id/edit",
-                element: <AdminsEdit/>
+                element: <EditAdmins/>
             },
             {
                 path: ":id/show",
                 element: <AdminsShow/>
-            }
+            },
         ]
     },
 ])

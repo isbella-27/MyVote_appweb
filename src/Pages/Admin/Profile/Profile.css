@@ -1,0 +1,138 @@
+/* Variables de Design */
+:root {
+  --primary-color: #3f51b5; /* Bleu Indigo */
+  --secondary-color: #e8eaf6; /* Fond bleu clair */
+  --background-color: #f4f7fa; /* Arrière-plan général */
+  --card-background: #ffffff;
+  --text-color: #333;
+  --text-light: #666;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --font-family: 'Roboto', sans-serif;
+}
+
+/* ---------------------------------- */
+/* Mise en page Générale */
+/* ---------------------------------- */
+.profile-page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+}
+
+.profile-content {
+  flex-grow: 1;
+  padding: 40px;
+  /* Assurez-vous que l'espace est pris à côté de la SideBar */
+  margin-left: 250px; /* Ajustez selon la largeur de votre SideBar */
+  max-width: calc(100% - 250px);
+}
+
+/* ---------------------------------- */
+/* Titre et Messages */
+/* ---------------------------------- */
+.welcome-title {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.loading-message, .error-message {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+
+.error-message {
+  background-color: #ffebee; /* Rouge très clair */
+  color: #d32f2f; /* Rouge foncé */
+  border-left: 5px solid #d32f2f;
+}
+
+/* ---------------------------------- */
+/* Grille des Cartes */
+/* ---------------------------------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.profile-card {
+  background-color: var(--card-background);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------- */
+/* Contenu de la Carte */
+/* ---------------------------------- */
+.card-title {
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card-value {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--text-color);
+  word-break: break-word; /* Pour les longs emails */
+}
+
+/* Badge Rôle */
+.role-badge {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+/* ---------------------------------- */
+/* Réactivité */
+/* ---------------------------------- */
+@media (max-width: 992px) {
+  .profile-content {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome-title {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
