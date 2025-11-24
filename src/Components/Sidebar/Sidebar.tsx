@@ -30,21 +30,18 @@ export default function Dashboard() {
             <aside className={`sidebar ${isOpen ? "open" : "closed"}`}> 
                 {!isAuthenticated && (
                     <div className='header-form'>
-                    <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
+                    <img src={logo} alt="Logo" width={"50px"} height={"50px"}/>
                     <h2 className="sidebar-title">Votify</h2>
                     </div>
                 )}
 
                 {isAuthenticated && (
                     <div className='header-form'>
-                    <img src={logo} alt="Logo" width={"60px"} height={"60px"}/>
+                    <img src={logo} alt="Logo" width={"50px"} height={"50px"}/>
                     <h2 className="sidebar-title">Dashboard</h2>
                     </div>
                 )}
                 
-
-                <nav className="sidebar-menu">          
-
         <nav className="sidebar-menu">          
 
           {/* Visible seulement si NON connecté */}

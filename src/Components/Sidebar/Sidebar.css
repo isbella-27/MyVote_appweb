@@ -51,7 +51,7 @@
 
 /* Sidebar ouverte (.sidebar.open) */
 .sidebar.open {
-    width: 260px;
+    width: 270px;
     padding: 30px 20px; 
     visibility: visible; 
 }
@@ -69,13 +69,16 @@
 /* === Composants de la Sidebar === */
 .header-form {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     padding-left: 40px;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     margin-bottom: 40px;
 }
 
 .sidebar-title {
+    color: white;
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;

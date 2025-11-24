@@ -17,6 +17,7 @@ import Profile from "../../Pages/Admin/Profile/Profile";
 import PublicConcour from "../../Pages/PublicConcour/PublicConcour";
 import PaymentSuccess from "../../Pages/PaymentSuccess/PaymentSuccess";
 import Transactions from "../../Pages/Admin/Transactions/Transactions";
+import EditAdmins from "../../Pages/Crud/Admins/Edit/EditAdmins";
 
 const router = createBrowserRouter([
     {
